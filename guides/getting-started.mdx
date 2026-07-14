@@ -1,0 +1,33 @@
+---
+title: "Getting started"
+description: "Make your first authenticated call to the KomKits public API"
+---
+
+Follow these steps to connect your first integration to KomKits — no engineering background required to get through step 3, and a working curl call by step 4.
+
+<Steps>
+  <Step title="Log in to the dashboard">
+    Sign in to your KomKits dashboard with your usual account credentials.
+  </Step>
+  <Step title="Open Developer → API keys">
+    From the left navigation, open the **Developer** menu and select **API keys**. This is where you create and manage every key your integrations use.
+  </Step>
+  <Step title="Create a key">
+    Click **Create key**, give it a descriptive name (for example, "Order sync integration"), and confirm. Your new key is shown once — copy it immediately and store it somewhere safe. KomKits never shows the full key again.
+  </Step>
+  <Step title="Make your first API call">
+    Use your new key as a Bearer token in the `Authorization` header of any public endpoint.
+
+    <CodeGroup>
+    ```bash curl
+    curl https://api.komkits.com/public/v1/items \
+      -H "Authorization: Bearer kk_live_xxxxxxxxxxxxxxxx"
+    ```
+    </CodeGroup>
+
+    A successful call returns a JSON list of your items.
+  </Step>
+  <Step title="Keep going">
+    Read the [Authentication](/guides/authentication) guide for the full header contract and error semantics, then browse the [API Reference](/api-reference) for every available endpoint.
+  </Step>
+</Steps>

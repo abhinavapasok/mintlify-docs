@@ -1,0 +1,49 @@
+---
+title: "Monitoring & troubleshooting"
+description: "Audit every public API call and resolve common errors"
+---
+
+Every call made with your API keys is logged, so you can audit exactly what your integrations are doing.
+
+## The API Logs page
+
+<Steps>
+  <Step title="Open Developer → API logs">
+    From the dashboard, open **Developer → API logs**.
+  </Step>
+  <Step title="Review recent requests">
+    Each row shows the endpoint called, HTTP status, timestamp, and which API key made the request.
+  </Step>
+  <Step title="Filter and search">
+    Use the filters to narrow down by status code, key, or date range when you're chasing down a specific issue.
+  </Step>
+</Steps>
+
+<Frame caption="The API logs page lists every request in default view.">
+  <img src="/images/api-logs-page.png" alt="API logs page in its default list state" />
+</Frame>
+
+If you haven't made any API calls yet, you'll see:
+
+> No requests logged yet — make your first API call and it appears here within seconds.
+
+## Common error responses
+
+<CodeGroup>
+```bash curl
+curl https://api.komkits.com/public/v1/items \
+  -H "Authorization: Bearer kk_live_xxxxxxxxxxxxxxxx"
+```
+</CodeGroup>
+
+If a call fails, check the response status against this table:
+
+| Status | Meaning | What to check |
+|--------|---------|----------------|
+| 401 | Missing, malformed, or invalid API key | Confirm the `Authorization: Bearer kk_live_…` header is present and the key is active. See [Authentication](/guides/authentication) for exact error messages. |
+| 403 | The API key has been revoked | Create a new key in the Developer Console under Developer → API keys. |
+| 404 | The resource doesn't exist for your account | Double-check the id/reference in the URL and that it belongs to your business. |
+| 422 | The request body failed validation | Review the field-level error details in the response and compare against the [API Reference](/api-reference) schema for that endpoint. |
+| 429 | Too many requests | You've exceeded the rate limit — back off and retry after a short delay. |
+
+Every error response follows the same shape: `{ "error": "<message>" }`. For full schema and per-endpoint details, see the [API Reference](/api-reference).
