@@ -13,17 +13,10 @@
         "groups": [
           {
             "group": "Guides",
-            "pages": [
-              "index",
-              "guides/getting-started",
-              "guides/authentication",
-              "guides/webhooks",
-              "guides/monitoring-troubleshooting"
-            ]
+            "pages": ["index"]
           }
         ]
-      },
-      { "tab": "API Reference", "openapi": "openapi.json" }
+      }
     ]
   }
 }
