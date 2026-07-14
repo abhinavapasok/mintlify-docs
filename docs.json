@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "KomKits Docs",
   "theme": "mint",
-  "colors": { "primary": "#FEF102", "dark": "#8E8701" },
+  "colors": { "primary": "#8E8701", "light": "#FEF102", "dark": "#8E8701" },
   "logo": { "light": "/logo/komkits-logo-light.png", "dark": "/logo/komkits-logo-dark.png" },
   "favicon": "/favicon.png",
   "fonts": { "heading": { "family": "Space Grotesk" }, "body": { "family": "Public Sans" } },
