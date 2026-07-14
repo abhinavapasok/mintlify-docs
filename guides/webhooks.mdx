@@ -1,0 +1,61 @@
+---
+title: "Webhooks"
+description: "Subscribe to KomKits business events and verify incoming deliveries"
+---
+
+Webhooks let your systems react in real time when something happens in KomKits — a new invoice, order, payment, or return — without polling the API.
+
+## Register an endpoint
+
+<Steps>
+  <Step title="Open Developer → Webhooks">
+    From the dashboard, open **Developer → Webhooks**.
+  </Step>
+  <Step title="Add an endpoint">
+    Click **Add endpoint** and enter the URL that should receive event deliveries. This must be a publicly reachable HTTPS URL.
+  </Step>
+  <Step title="Choose an auth type">
+    Select **Basic** (username + password) or **JWT** (bearer token) authentication for outbound deliveries, and provide the matching credentials. KomKits signs every delivery with your chosen credentials so your endpoint can verify the caller.
+  </Step>
+  <Step title="Select events">
+    Choose which event types this endpoint should receive, then save.
+  </Step>
+</Steps>
+
+<Frame caption="The endpoint form configures URL, auth, and subscribed events.">
+  <img src="/images/webhook-form-overlay.png" alt="Webhook endpoint create/edit overlay form" />
+</Frame>
+
+## Event catalogue
+
+| Event | Fired when |
+|-------|------------|
+| `invoice.created` | A new sales invoice is created |
+| `order.created` | A new sales order is created |
+| `payment.recorded` | A payment is recorded |
+| `return.created` | A new sales return is created |
+
+Every delivery carries a thin payload — the event type, document id/number, your business code, and a timestamp — never the full document. Fetch the full document from the API Reference using the id if you need more detail.
+
+## Verifying deliveries
+
+Every outbound request from KomKits includes:
+
+<CodeGroup>
+```text Outbound headers
+Authorization: Basic <base64-encoded-credentials>   # or: Bearer <jwt>, depending on your endpoint's auth type
+X-Komkits-Signature: sha256=<hmac>
+User-Agent: KomKits-Webhooks/1.0
+Content-Type: application/json
+```
+</CodeGroup>
+
+- **Authorization** — sent using whichever auth type (Basic or JWT) you configured for the endpoint.
+- **X-Komkits-Signature** — an HMAC-SHA256 signature of the request body, signed with your endpoint's configured secret. Recompute this signature on your end and compare it to verify the payload hasn't been tampered with.
+- **User-Agent** — always `KomKits-Webhooks/1.0`, so you can identify genuine KomKits traffic in your logs.
+
+<Warning>
+  KomKits never follows redirects when delivering a webhook. If your endpoint returns a 3xx response, the delivery is treated as failed and retried — it will not be forwarded to a different URL.
+</Warning>
+
+Retries use exponential backoff on failed deliveries (non-2xx responses, timeouts, or connection errors).

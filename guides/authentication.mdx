@@ -1,0 +1,46 @@
+---
+title: "Authentication"
+description: "How to authenticate requests to the KomKits public API"
+---
+
+Every request to the KomKits public API is authenticated with a single Bearer API key. There is no separate business or tenant identifier to send — your key IS your identity.
+
+## The Authorization header
+
+Send your API key as a Bearer token on every request:
+
+<CodeGroup>
+```bash curl
+curl https://api.komkits.com/public/v1/items \
+  -H "Authorization: Bearer kk_live_xxxxxxxxxxxxxxxx"
+```
+</CodeGroup>
+
+Replace `kk_live_xxxxxxxxxxxxxxxx` with a real key from your dashboard.
+
+<Frame caption="The create key dialog reveals the key once.">
+  <img src="/images/api-key-create-dialog.png" alt="Create API key dialog showing the one-time key reveal" />
+</Frame>
+
+## Creating a key
+
+Keys are created and revoked entirely from your dashboard — no engineering help needed. Open **Developer → API keys**, click **Create key**, and copy the value shown. KomKits never displays the full key again after that first reveal.
+
+## How your account is identified
+
+Your business account is resolved exclusively from the API key you present — never from any other header, query parameter, or request body field. Do not send (and do not expect KomKits to read) any business-code header; the key alone determines which account's data a request can reach.
+
+## Error responses
+
+If a request cannot be authenticated, KomKits returns one of the following. The response body always has the shape `{ "error": "<message>" }`.
+
+| Status | Error message | What it means | Next step |
+|--------|---------------|----------------|-----------|
+| 401 | `Missing or malformed Authorization header. Expected: Bearer <api-key>` | The `Authorization` header is missing or does not start with `Bearer `. | Check that you're sending `Authorization: Bearer kk_live_…` with an active key from the Developer Console. |
+| 401 | `Malformed API key` | The value after `Bearer ` doesn't match the expected key format. | Check that you're sending `Authorization: Bearer kk_live_…` with an active key from the Developer Console. |
+| 401 | `Invalid API key` | The key doesn't match any active key on record. | Check that you're sending `Authorization: Bearer kk_live_…` with an active key from the Developer Console. |
+| 403 | `API key has been revoked` | The key was valid but has since been revoked. | Create a new key in the Developer Console under Developer → API keys. |
+
+<Note>
+  For security, an unknown key and a wrong key both return the same `Invalid API key` message and status — this prevents an attacker from telling the two cases apart.
+</Note>

@@ -13,7 +13,7 @@
         "groups": [
           {
             "group": "Guides",
-            "pages": ["index"]
+            "pages": ["index", "guides/getting-started", "guides/authentication", "guides/webhooks", "guides/monitoring-troubleshooting"]
           }
         ]
       },
