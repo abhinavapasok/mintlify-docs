@@ -1,0 +1,50 @@
+---
+title: "API overview"
+sidebarTitle: "Overview"
+description: "How the KomKits public API is organized — conventions, envelopes, and where to start."
+---
+
+The KomKits public API gives you read access to your commerce data — orders, invoices, payments, items, parties (your customers and vendors), and the lookup data behind them. Every request is authenticated with a Bearer API key; see the [Authentication guide](/guides/authentication) to create one.
+
+## Base URL
+
+```text
+https://api.komkits.com/public/v1
+```
+
+## Conventions
+
+The API follows three conventions everywhere, so once you have read one endpoint you have read them all:
+
+- **By-id lookups** are `GET /{resource}/details?id={id}` and return a single resource object.
+- **List and search** operations are `POST /{resource}/filter` with the filter criteria in the request body. POST is used (rather than GET) so filters can carry structured JSON bodies.
+- **Every response** uses the same envelope: your payload in `data`, plus `message`, `status`, `code`, and a `reqId` you can quote to support.
+
+```json
+{
+  "data": { "id": 1042, "order_code": "ORD-2026-01042" },
+  "message": "Success",
+  "trace": null,
+  "status": true,
+  "code": 200,
+  "reqId": "req_a1b2c3"
+}
+```
+
+## Domains
+
+| Domain | What it covers |
+| --- | --- |
+| Orders, Invoices, Quotations, Sales returns | Sales documents through their lifecycle |
+| Incoming payments, Outgoing payments, Payments | Money in, money out, and the direction-agnostic ledger |
+| Items, Item prices, Item stock | Catalog, per-channel pricing, per-location stock |
+| Parties | Customers, vendors, and other business parties |
+| Brands, Categories, Manufacturers, Sales channels, Locations, Payment accounts, Countries | Lookup and reference data |
+
+## Webhook events
+
+KomKits can also push events to you the moment documents change — see the [Webhooks guide](/guides/webhooks) for subscriptions and delivery guarantees, and the **Webhook events** pages in this reference for each payload.
+
+## Errors
+
+Authentication failures return `401`/`403` with `{ "error": "<message>" }` — the [Authentication guide](/guides/authentication#error-responses) lists every case and the fix.
