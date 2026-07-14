@@ -32,14 +32,43 @@
   --grey-200: #f0f0f0;
   --grey-300: #d9d9d9;
   --grey-400: #bfbfbf;
+  --grey-600: #595959;
   --grey-700: #262626;
   --grey-a50: #fafafb;
 
+  /* ---- Semantic status (Ant Design scales) ----------------- */
+  --success: #52c41a;
+  --success-light: #b7eb8f;
+  --success-lighter: #f6ffed;
+  --success-dark: #237804;
+  --error: #ff4d4f;
+  --error-light: #ffa39e;
+  --error-lighter: #fff1f0;
+  --error-dark: #a8071a;
+  --warning: #faad14;
+  --warning-light: #ffd666;
+  --warning-lighter: #fffbe6;
+  --warning-dark: #ad6800;
+  --info: #13c2c2;
+  --info-light: #87e8de;
+  --info-lighter: #e6fffb;
+
   /* ---- Semantic aliases ----------------------------------- */
   --surface-page: var(--grey-a50);
+  --surface-card: var(--kk-white);
+  --text-heading: var(--kk-black);
+  --text-body: var(--grey-700);
+  --text-secondary: #8c8c8c;
+  --color-primary-wash: var(--kk-yellow-100);
+  --color-accent-wash: var(--kk-olive-100);
   --border-subtle: var(--grey-200);
   --border-default: var(--grey-300);
   --focus-ring-accent: rgba(142, 135, 1, 0.45);
+
+  /* ---- Weights & pill radius ------------------------------- */
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --radius-pill: 999px;
 
   /* ---- Radii (4px controls / 8px cards) -------------------- */
   --radius-sm: 4px;
@@ -51,6 +80,18 @@
   --shadow-focus-accent: 0 0 0 2px var(--focus-ring-accent);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-base: 200ms;
+}
+
+/* Dark-mode token remaps (Mintlify stamps `dark` on <html>) */
+html.dark {
+  --surface-card: #17181c;
+  --text-heading: var(--kk-white);
+  --text-body: #d4d4d8;
+  --text-secondary: #a1a1aa;
+  --color-primary-wash: rgba(254, 241, 2, 0.1);
+  --color-accent-wash: rgba(142, 135, 1, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-default: rgba(255, 255, 255, 0.16);
 }
 
 /* ============================================================
