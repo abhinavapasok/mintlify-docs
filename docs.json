@@ -16,6 +16,10 @@
             "pages": ["index"]
           }
         ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "openapi.json"
       }
     ]
   }
