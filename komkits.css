@@ -176,11 +176,11 @@ html.dark #sidebar a:not([aria-current='page']):hover {
   color: var(--kk-white);
 }
 
-/* Navbar logo: Mintlify's default h-7 (28px) is too small for the
-   stacked lockup (verified live: img.nav-logo) */
+/* Navbar logo: horizontal FE wordmark (apps/frontend logo.png /
+   logo-dark.png). 32px tall suits the ~5:1 wordmark proportions. */
 img.nav-logo,
 #navbar img.nav-logo {
-  height: 2.75rem;
+  height: 2rem;
   width: auto;
   max-height: none;
 }
