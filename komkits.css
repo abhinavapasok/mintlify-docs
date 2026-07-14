@@ -420,6 +420,40 @@ html.dark [data-component-part='code-group-tab-bar'] {
 }
 
 /* ============================================================
+   Radius normalization — the FE system has exactly two radii:
+   4px controls, 8px cards. Map Mintlify's utility radii onto
+   them (verified offenders: sidebar links & Ask Assistant 12px,
+   cURL dropdown 10px, copy buttons & sidebar method badges 6px,
+   playground bar 12px, response/playground panels 16px).
+   ============================================================ */
+
+/* Cards & panels (16px → 8px) */
+div[class*='rounded-2xl'] {
+  border-radius: var(--radius-md) !important;
+}
+div[class*='rounded-t-2xl'] {
+  border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+}
+
+/* Controls (12px / 10px / 6px → 4px). Exclude .card so real cards
+   keep the 8px card radius. */
+button[class*='rounded-xl'],
+a[class*='rounded-xl'],
+div[class*='rounded-xl']:not(.card),
+div[class*='rounded-[10px]'],
+button[class*='rounded-md'],
+span[class*='rounded-md'],
+div[class*='rounded-md']:not(.card),
+#sidebar a {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* Inline code chips ship at 6px */
+.mdx-content code:not(pre code) {
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
    Landing CTA (shipped in PR #5, kept here)
    Primary CTA: electric yellow fill + black ink, 4px control
    radius, hero-only yellow glow. The single yellow accent on
