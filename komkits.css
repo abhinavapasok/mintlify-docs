@@ -6,7 +6,17 @@
    Mintlify selectors: https://mintlify.com/docs/customize/custom-scripts
    ============================================================ */
 
+/* ---- Fonts (design-system/tokens/fonts.css, same weights as
+   apps/frontend/src/config.ts next/font setup). Mintlify falls
+   back to its bundled Inter/Paper Mono, so load + enforce. ---- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 :root {
+  /* ---- Font families (design-system/tokens/typography.css) */
+  --font-display: 'Space Grotesk', 'Public Sans', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
   /* ---- Brand primitives ---------------------------------- */
   --kk-yellow: #fef102;
   --kk-yellow-600: #e6d902;
@@ -38,6 +48,48 @@
   --shadow-focus-accent: 0 0 0 2px var(--focus-ring-accent);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-base: 200ms;
+}
+
+/* ============================================================
+   Fonts — enforce the three family roles over Mintlify's
+   bundled Inter/Paper Mono (!important needed to beat the
+   platform's utility classes).
+   ============================================================ */
+
+body,
+#navbar,
+#sidebar,
+#panel,
+mdx-content,
+#page-title + p,
+card,
+eyebrow {
+  font-family: var(--font-body) !important;
+}
+
+#page-title,
+mdx-content h1,
+mdx-content h2,
+mdx-content h3,
+mdx-content h4,
+mdx-content h5,
+api-section-heading-title,
+sidebar-group-header {
+  font-family: var(--font-display) !important;
+}
+
+code,
+pre,
+kbd,
+samp,
+code-block,
+code-group,
+#request-example,
+#response-example,
+#request-example code,
+#response-example code,
+field code {
+  font-family: var(--font-mono) !important;
 }
 
 /* ============================================================
