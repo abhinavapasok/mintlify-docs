@@ -498,3 +498,56 @@ div[class*='rounded-md']:not(.card),
   background: var(--kk-yellow-600);
   color: var(--kk-black);
 }
+
+/* ============================================================
+   Wave 4 — Accessibility & occlusion fixes (design critique
+   2026-07-14). Pairs with docs.json colors.primary #6F6A01.
+   ============================================================ */
+
+/* Olive small text must use the AA-safe step (--kk-olive-700,
+   ~5.4:1 on --grey-a50). #8E8701 measures 3.4–3.6:1 at eyebrow
+   size — decorative/large use only. Mirrors design-system
+   --color-accent-text. */
+html:not(.dark) div.eyebrow,
+html:not(.dark) .eyebrow {
+  color: var(--kk-olive-700) !important;
+}
+
+/* Floating "Ask a question" bar (~78px, sticky bottom of
+   #content-area) covered the end of every page — curl blocks,
+   step text, response examples. Reserve clearance so the last
+   content can always scroll above it. */
+#content-area .mdx-content {
+  padding-bottom: 6rem;
+}
+
+/* API playground request/response panels clipped long curl URLs
+   at 1440px (scrollWidth 487 vs clientWidth 408, overflow-x
+   visible). Scroll inside the panel instead. */
+#request-example pre,
+#response-example pre,
+[data-component-part='code-block-root'] pre {
+  overflow-x: auto !important;
+}
+
+/* Callouts: one accent system. Mintlify's <Note>/<Info> ship
+   Tailwind blue; restyle to the brand olive wash so notes and
+   warnings speak the same language. */
+.callout[data-callout-type='note'],
+.callout[data-callout-type='info'] {
+  background: var(--color-accent-wash) !important;
+  border-color: var(--kk-olive) !important;
+}
+.callout[data-callout-type='note'] [data-component-part='callout-icon'],
+.callout[data-callout-type='info'] [data-component-part='callout-icon'] {
+  color: var(--kk-olive-700);
+}
+html.dark .callout[data-callout-type='note'],
+html.dark .callout[data-callout-type='info'] {
+  background: rgba(142, 135, 1, 0.18) !important;
+  border-color: rgba(142, 135, 1, 0.45) !important;
+}
+html.dark .callout[data-callout-type='note'] [data-component-part='callout-icon'],
+html.dark .callout[data-callout-type='info'] [data-component-part='callout-icon'] {
+  color: var(--kk-olive-100);
+}
