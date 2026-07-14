@@ -2,10 +2,24 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "KomKits Docs",
   "theme": "mint",
-  "colors": { "primary": "#6F6A01", "light": "#FEF102", "dark": "#6F6A01" },
-  "logo": { "light": "/logo/komkits-wordmark-light.png", "dark": "/logo/komkits-wordmark-dark.png" },
+  "colors": {
+    "primary": "#6F6A01",
+    "light": "#FEF102",
+    "dark": "#6F6A01"
+  },
+  "logo": {
+    "light": "/logo/komkits-wordmark-light.png",
+    "dark": "/logo/komkits-wordmark-dark.png"
+  },
   "favicon": "/favicon.png",
-  "fonts": { "heading": { "family": "Space Grotesk" }, "body": { "family": "Public Sans" } },
+  "fonts": {
+    "heading": {
+      "family": "Space Grotesk"
+    },
+    "body": {
+      "family": "Public Sans"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -13,15 +27,29 @@
         "groups": [
           {
             "group": "Guides",
-            "pages": ["index", "guides/getting-started", "guides/authentication", "guides/webhooks", "guides/monitoring-troubleshooting"]
+            "pages": [
+              "index",
+              "guides/getting-started",
+              "guides/authentication",
+              "guides/webhooks",
+              "guides/monitoring-troubleshooting"
+            ]
           }
         ]
       },
       {
         "tab": "API Reference",
-        "openapi": "openapi.json",
-        "pages": [
-          "api-reference/overview"
+        "groups": [
+          {
+            "group": "Getting oriented",
+            "pages": [
+              "api-reference/overview"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "openapi": "openapi.json"
+          }
         ]
       }
     ]
