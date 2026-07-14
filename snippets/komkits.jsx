@@ -106,7 +106,6 @@ export const KkLogo = ({ size = 'md', height, alt = 'KomKits', style = {} }) => 
   const imgStyle = {
     height: h,
     width: 'auto',
-    display: 'inline-block',
     flexShrink: 0,
     maxWidth: '100%',
     objectFit: 'contain',
@@ -114,8 +113,8 @@ export const KkLogo = ({ size = 'md', height, alt = 'KomKits', style = {} }) => 
   };
   return (
     <>
-      <img src="/logo/komkits-logo-light.png" alt={alt} className="block dark:hidden" style={imgStyle} noZoom />
-      <img src="/logo/komkits-logo-dark.png" alt={alt} className="hidden dark:block" style={imgStyle} noZoom />
+      <img src="/logo/komkits-logo-light.png" alt={alt} className="kk-logo-light" style={imgStyle} noZoom />
+      <img src="/logo/komkits-logo-dark.png" alt={alt} className="kk-logo-dark" style={imgStyle} noZoom />
     </>
   );
 };

@@ -175,6 +175,30 @@ html.dark #sidebar a:not([aria-current='page']):hover {
   color: var(--kk-white);
 }
 
+/* Navbar logo: Mintlify's default h-7 (28px) is too small for the
+   stacked lockup (verified live: img.nav-logo) */
+img.nav-logo,
+#navbar img.nav-logo {
+  height: 2.75rem;
+  width: auto;
+  max-height: none;
+}
+
+/* Theme-swapped logo pair (used by KkLogo — snippet components don't
+   get Tailwind's dark: variants, so swap via our own classes) */
+.kk-logo-light {
+  display: inline-block;
+}
+.kk-logo-dark {
+  display: none;
+}
+html.dark .kk-logo-light {
+  display: none;
+}
+html.dark .kk-logo-dark {
+  display: inline-block;
+}
+
 /* Eyebrows: tiny ALL-CAPS overline with wide tracking (the one place caps are allowed) */
 eyebrow {
   text-transform: uppercase;
