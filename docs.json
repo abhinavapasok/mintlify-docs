@@ -1,72 +1,29 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "name": "KomKits Docs",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
+  "colors": { "primary": "#FEF102", "dark": "#8E8701" },
+  "logo": { "light": "/logo/komkits-logo-light.png", "dark": "/logo/komkits-logo-dark.png" },
+  "favicon": "/favicon.png",
+  "fonts": { "heading": { "family": "Space Grotesk" }, "body": { "family": "Public Sans" } },
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "index",
+              "guides/getting-started",
+              "guides/authentication",
+              "guides/webhooks",
+              "guides/monitoring-troubleshooting"
+            ]
+          }
         ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      },
+      { "tab": "API Reference", "openapi": "openapi.json" }
     ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
   }
 }
