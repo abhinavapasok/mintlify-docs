@@ -1,0 +1,24 @@
+/* KomKits brand overrides — values from design-system/tokens (colors.css, spacing.css, effects.css) */
+
+/* Primary CTA: electric yellow fill + black ink, 4px control radius.
+   The single yellow accent on the page — everything else stays olive/neutral. */
+.kk-cta {
+  display: inline-block;
+  background: #fef102;
+  color: #000000;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kk-cta:hover {
+  background: #e6d902; /* --kk-yellow-600 */
+  color: #000000;
+}
+
+.kk-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(142, 135, 1, 0.45); /* --shadow-focus-accent (olive) */
+}

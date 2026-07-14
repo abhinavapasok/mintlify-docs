@@ -249,6 +249,11 @@
           "200": {
             "description": "Acknowledge receipt (any 2xx)."
           }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "Invoice created"
+          }
         }
       }
     },
@@ -294,6 +299,11 @@
         "responses": {
           "200": {
             "description": "Acknowledge receipt (any 2xx)."
+          }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "Order created"
           }
         }
       }
@@ -341,6 +351,11 @@
           "200": {
             "description": "Acknowledge receipt (any 2xx)."
           }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "Payment recorded"
+          }
         }
       }
     },
@@ -386,6 +401,11 @@
         "responses": {
           "200": {
             "description": "Acknowledge receipt (any 2xx)."
+          }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "Return created"
           }
         }
       }
