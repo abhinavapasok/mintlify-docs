@@ -87,10 +87,6 @@
     {
       "name": "Payment accounts",
       "description": "Payment accounts (bank/cash/card). Lookup domain — schema-only plus one response example."
-    },
-    {
-      "name": "Webhook events",
-      "description": "Event deliveries KomKits sends to your endpoint. See the Webhooks guide for subscriptions, retries, and payload guarantees."
     }
   ],
   "components": {
@@ -98,7 +94,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Present your API key as `Authorization: Bearer kk_live_...`. Keys are created and revoked from the KomKits dashboard Developer Console. Your business account is resolved exclusively from the key — never from headers, query params, or body fields."
+        "description": "Present your API key as `Authorization: Bearer kk_live_...`. Keys are created and revoked from the KomKits dashboard Developer Console. req.businessCode is resolved exclusively from the key — never from headers, query params, or body fields."
       }
     },
     "schemas": {
@@ -134,514 +130,6 @@
             "type": "string"
           }
         }
-      },
-      "Order": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "order_code": {
-            "type": "string"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "payment_status": {
-            "type": "string"
-          },
-          "qc_status": {
-            "type": "string"
-          },
-          "payment_method": {
-            "type": "string"
-          },
-          "location_code": {
-            "type": "string"
-          },
-          "order_type": {
-            "type": "string"
-          },
-          "order_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "due_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "subtotal": {
-            "type": "number"
-          },
-          "tax_total": {
-            "type": "number"
-          },
-          "total_amount": {
-            "type": "number"
-          },
-          "payed_amount": {
-            "type": "number",
-            "description": "Amount received so far. The field name `payed_amount` is the canonical API spelling — do not send or expect `paid_amount`."
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "description": "A order resource."
-      },
-      "Invoice": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "invoice_number": {
-            "type": "string"
-          },
-          "party_id": {
-            "type": "integer"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "payment_status": {
-            "type": "string"
-          },
-          "location_code": {
-            "type": "string"
-          },
-          "invoice_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "due_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "subtotal": {
-            "type": "number"
-          },
-          "tax_total": {
-            "type": "number"
-          },
-          "discount_total": {
-            "type": "number"
-          },
-          "additional_charges": {
-            "type": "number"
-          },
-          "total_amount": {
-            "type": "number"
-          },
-          "created_by": {
-            "type": "integer"
-          }
-        },
-        "description": "A invoice resource."
-      },
-      "Quotation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "quotation_number": {
-            "type": "string"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "location_code": {
-            "type": "string"
-          },
-          "quotation_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "due_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "total_amount": {
-            "type": "number"
-          }
-        },
-        "description": "A quotation resource."
-      },
-      "IncomingPayment": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "party_id": {
-            "type": "integer"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "payment_in_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "payment_account_id": {
-            "type": "integer"
-          },
-          "total_amount": {
-            "type": "number"
-          }
-        },
-        "description": "A incoming payment resource."
-      },
-      "OutgoingPayment": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "party_id": {
-            "type": "integer"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "payment_out_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "total_amount": {
-            "type": "number"
-          }
-        },
-        "description": "A outgoing payment resource."
-      },
-      "Payment": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "party_id": {
-            "type": "integer"
-          },
-          "payment_account_id": {
-            "type": "integer"
-          },
-          "payment_mode": {
-            "type": "string"
-          },
-          "payment_direction": {
-            "type": "string"
-          },
-          "currency_code": {
-            "type": "string"
-          },
-          "amount": {
-            "type": "number"
-          },
-          "payment_date": {
-            "type": "string",
-            "format": "date"
-          }
-        },
-        "description": "A payment resource."
-      },
-      "Item": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "sku_code": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "item_type": {
-            "type": "string"
-          },
-          "hsn_sac": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "brand": {
-            "type": "string"
-          },
-          "manufacturer": {
-            "type": "string"
-          },
-          "unit": {
-            "type": "string"
-          },
-          "is_returnable": {
-            "type": "boolean"
-          }
-        },
-        "description": "A item resource."
-      },
-      "Party": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "mobile_number": {
-            "type": "string"
-          },
-          "party_type": {
-            "type": "string"
-          },
-          "party_category": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          }
-        },
-        "description": "A party resource."
-      },
-      "SalesReturn": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "sales_return_number": {
-            "type": "string"
-          },
-          "party_name": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "payment_status": {
-            "type": "string"
-          },
-          "location_code": {
-            "type": "string"
-          },
-          "sales_return_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "due_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "total_amount": {
-            "type": "number"
-          }
-        },
-        "description": "A sales return resource."
-      },
-      "Brand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "is_active": {
-            "type": "boolean"
-          }
-        },
-        "description": "A brand resource."
-      },
-      "Category": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "level": {
-            "type": "integer"
-          }
-        },
-        "description": "A category resource."
-      },
-      "SalesChannel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "channel_type": {
-            "type": "string"
-          },
-          "transaction_type": {
-            "type": "string"
-          }
-        },
-        "description": "A sales channel resource."
-      },
-      "Country": {
-        "type": "object",
-        "properties": {
-          "country": {
-            "type": "string"
-          },
-          "country_code2": {
-            "type": "string"
-          }
-        },
-        "description": "A country resource."
-      },
-      "Manufacturer": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "is_active": {
-            "type": "boolean"
-          }
-        },
-        "description": "A manufacturer resource."
-      },
-      "ItemPrice": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "sku_code": {
-            "type": "string"
-          },
-          "channel_id": {
-            "type": "integer"
-          },
-          "currency_code": {
-            "type": "string"
-          },
-          "tax_mode": {
-            "type": "string"
-          },
-          "price": {
-            "type": "number"
-          }
-        },
-        "description": "A item price resource."
-      },
-      "ItemStock": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "sku_code": {
-            "type": "string"
-          },
-          "channel_id": {
-            "type": "integer"
-          },
-          "location_id": {
-            "type": "integer"
-          },
-          "quantity": {
-            "type": "integer"
-          }
-        },
-        "description": "A item stock resource."
-      },
-      "Location": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "location_code": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          }
-        },
-        "description": "A location resource."
-      },
-      "PaymentAccount": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "party_id": {
-            "type": "integer"
-          },
-          "account_name": {
-            "type": "string"
-          },
-          "payment_mode": {
-            "type": "string"
-          },
-          "currency_code": {
-            "type": "string"
-          },
-          "current_balance_amount": {
-            "type": "number"
-          }
-        },
-        "description": "A payment account resource."
       }
     },
     "responses": {
@@ -766,10 +254,7 @@
           "metadata": {
             "title": "Invoice created"
           }
-        },
-        "tags": [
-          "Webhook events"
-        ]
+        }
       }
     },
     "Order created": {
@@ -820,10 +305,7 @@
           "metadata": {
             "title": "Order created"
           }
-        },
-        "tags": [
-          "Webhook events"
-        ]
+        }
       }
     },
     "Payment recorded": {
@@ -874,10 +356,7 @@
           "metadata": {
             "title": "Payment recorded"
           }
-        },
-        "tags": [
-          "Webhook events"
-        ]
+        }
       }
     },
     "Return created": {
@@ -928,10 +407,7 @@
           "metadata": {
             "title": "Return created"
           }
-        },
-        "tags": [
-          "Webhook events"
-        ]
+        }
       }
     }
   },
@@ -960,19 +436,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Order"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -987,10 +451,10 @@
                     "order_type": "sales",
                     "order_date": "2026-07-01",
                     "due_date": "2026-07-15",
-                    "subtotal": 43000,
+                    "subtotal": 43000.0,
                     "tax_total": 3730.5,
                     "total_amount": 45230.5,
-                    "payed_amount": 20000,
+                    "payed_amount": 20000.0,
                     "created_at": "2026-07-01T09:12:00Z"
                   },
                   "message": "Success",
@@ -1140,23 +604,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Order"
-                          },
-                          "description": "Matching Order records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -1172,7 +620,7 @@
                       "order_code": "ORD-2026-01043",
                       "party_name": "Northline Distributors",
                       "status": "processing",
-                      "total_amount": 18200
+                      "total_amount": 18200.0
                     }
                   ],
                   "message": "Success",
@@ -1220,19 +668,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Invoice"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -1245,11 +681,11 @@
                     "location_code": "WH-BLR-01",
                     "invoice_date": "2026-07-02",
                     "due_date": "2026-07-16",
-                    "subtotal": 40000,
-                    "tax_total": 4800,
-                    "discount_total": 500,
-                    "additional_charges": 250,
-                    "total_amount": 44550,
+                    "subtotal": 40000.0,
+                    "tax_total": 4800.0,
+                    "discount_total": 500.0,
+                    "additional_charges": 250.0,
+                    "total_amount": 44550.0,
                     "created_by": 12
                   },
                   "message": "Success",
@@ -1374,23 +810,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Invoice"
-                          },
-                          "description": "Matching Invoice records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -1399,14 +819,14 @@
                       "invoice_number": "INV-2026-08891",
                       "party_name": "Coastal Retail Traders",
                       "payment_status": "unpaid",
-                      "total_amount": 44550
+                      "total_amount": 44550.0
                     },
                     {
                       "id": 8892,
                       "invoice_number": "INV-2026-08892",
                       "party_name": "Northline Distributors",
                       "payment_status": "paid",
-                      "total_amount": 12750
+                      "total_amount": 12750.0
                     }
                   ],
                   "message": "Success",
@@ -1454,19 +874,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Quotation"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -1477,7 +885,7 @@
                     "location_code": "WH-BLR-01",
                     "quotation_date": "2026-06-28",
                     "due_date": "2026-07-12",
-                    "total_amount": 18200
+                    "total_amount": 18200.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -1589,23 +997,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Quotation"
-                          },
-                          "description": "Matching Quotation records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -1614,14 +1006,14 @@
                       "quotation_number": "QUO-2026-00512",
                       "party_name": "Northline Distributors",
                       "status": "sent",
-                      "total_amount": 18200
+                      "total_amount": 18200.0
                     },
                     {
                       "id": 513,
                       "quotation_number": "QUO-2026-00513",
                       "party_name": "Coastal Retail Traders",
                       "status": "draft",
-                      "total_amount": 9400
+                      "total_amount": 9400.0
                     }
                   ],
                   "message": "Success",
@@ -1669,19 +1061,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/IncomingPayment"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -1692,7 +1072,7 @@
                     "status": "Completed",
                     "payment_in_date": "2026-07-03",
                     "payment_account_id": 7,
-                    "total_amount": 20000
+                    "total_amount": 20000.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -1786,23 +1166,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/IncomingPayment"
-                          },
-                          "description": "Matching IncomingPayment records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -1811,14 +1175,14 @@
                       "party_name": "Coastal Retail Traders",
                       "category": "sales_receipt",
                       "status": "Completed",
-                      "total_amount": 20000
+                      "total_amount": 20000.0
                     },
                     {
                       "id": 2202,
                       "party_name": "Northline Distributors",
                       "category": "sales_receipt",
                       "status": "Pending",
-                      "total_amount": 9400
+                      "total_amount": 9400.0
                     }
                   ],
                   "message": "Success",
@@ -1866,19 +1230,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/OutgoingPayment"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -1888,7 +1240,7 @@
                     "category": "vendor_payment",
                     "status": "Completed",
                     "payment_out_date": "2026-07-04",
-                    "total_amount": 12000
+                    "total_amount": 12000.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -1982,23 +1334,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/OutgoingPayment"
-                          },
-                          "description": "Matching OutgoingPayment records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -2007,14 +1343,14 @@
                       "party_name": "Acme Freight Logistics",
                       "category": "vendor_payment",
                       "status": "Completed",
-                      "total_amount": 12000
+                      "total_amount": 12000.0
                     },
                     {
                       "id": 3306,
                       "party_name": "Bright Packaging Co",
                       "category": "expense",
                       "status": "Pending",
-                      "total_amount": 2100
+                      "total_amount": 2100.0
                     }
                   ],
                   "message": "Success",
@@ -2062,19 +1398,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Payment"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -2084,7 +1408,7 @@
                     "payment_mode": "bank_transfer",
                     "payment_direction": "in",
                     "currency_code": "INR",
-                    "amount": 20000,
+                    "amount": 20000.0,
                     "payment_date": "2026-07-03"
                   },
                   "message": "Success",
@@ -2177,23 +1501,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Payment"
-                          },
-                          "description": "Matching Payment records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -2202,14 +1510,14 @@
                       "party_id": 3421,
                       "payment_mode": "bank_transfer",
                       "payment_direction": "in",
-                      "amount": 20000
+                      "amount": 20000.0
                     },
                     {
                       "id": 5511,
                       "party_id": 5210,
                       "payment_mode": "cheque",
                       "payment_direction": "out",
-                      "amount": 12000
+                      "amount": 12000.0
                     }
                   ],
                   "message": "Success",
@@ -2257,19 +1565,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Item"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -2394,23 +1690,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Item"
-                          },
-                          "description": "Matching Item records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -2472,19 +1752,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Party"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -2592,23 +1860,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Party"
-                          },
-                          "description": "Matching Party records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -2670,19 +1922,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/SalesReturn"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -2694,7 +1934,7 @@
                     "location_code": "WH-BLR-01",
                     "sales_return_date": "2026-07-05",
                     "due_date": "2026-07-10",
-                    "total_amount": 3200
+                    "total_amount": 3200.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -2810,23 +2050,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/SalesReturn"
-                          },
-                          "description": "Matching SalesReturn records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -2835,14 +2059,14 @@
                       "sales_return_number": "SR-2026-00771",
                       "party_name": "Coastal Retail Traders",
                       "status": "approved",
-                      "total_amount": 3200
+                      "total_amount": 3200.0
                     },
                     {
                       "id": 772,
                       "sales_return_number": "SR-2026-00772",
                       "party_name": "Northline Distributors",
                       "status": "pending",
-                      "total_amount": 850
+                      "total_amount": 850.0
                     }
                   ],
                   "message": "Success",
@@ -2890,19 +2114,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Brand"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -2984,23 +2196,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Brand"
-                          },
-                          "description": "Matching Brand records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3041,19 +2237,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Category"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -3135,23 +2319,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Category"
-                          },
-                          "description": "Matching Category records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3192,19 +2360,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/SalesChannel"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -3290,23 +2446,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/SalesChannel"
-                          },
-                          "description": "Matching SalesChannel records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3348,23 +2488,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Country"
-                          },
-                          "description": "Matching Country records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": [
@@ -3422,19 +2546,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Manufacturer"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -3516,23 +2628,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Manufacturer"
-                          },
-                          "description": "Matching Manufacturer records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3573,19 +2669,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/ItemPrice"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -3594,7 +2678,7 @@
                     "channel_id": 3,
                     "currency_code": "INR",
                     "tax_mode": "with_tax",
-                    "price": 799
+                    "price": 799.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -3678,23 +2762,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ItemPrice"
-                          },
-                          "description": "Matching ItemPrice records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3735,19 +2803,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/ItemStock"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -3834,23 +2890,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ItemStock"
-                          },
-                          "description": "Matching ItemStock records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -3891,19 +2931,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/Location"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -4005,23 +3033,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Location"
-                          },
-                          "description": "Matching Location records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
@@ -4062,19 +3074,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "$ref": "#/components/schemas/PaymentAccount"
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 },
                 "example": {
                   "data": {
@@ -4083,7 +3083,7 @@
                     "account_name": "Coastal Retail Traders - HDFC Current",
                     "payment_mode": "bank",
                     "currency_code": "INR",
-                    "current_balance_amount": 154200
+                    "current_balance_amount": 154200.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -4163,23 +3163,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/SuccessEnvelope"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "data": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/PaymentAccount"
-                          },
-                          "description": "Matching PaymentAccount records."
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SuccessEnvelope"
                 }
               }
             }
