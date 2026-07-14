@@ -1,24 +1,191 @@
-/* KomKits brand overrides — values from design-system/tokens (colors.css, spacing.css, effects.css) */
+/* ============================================================
+   KomKits Docs — brand theme layer (Waves 1–2: chrome + type/shape)
+   VENDORED from design-system/tokens/ (hub root) — that folder is
+   the source of truth; sync changes there first. Mirrors the
+   frontend bridge at apps/frontend/src/styles/komkits-tokens.css.
+   Mintlify selectors: https://mintlify.com/docs/customize/custom-scripts
+   ============================================================ */
 
-/* Primary CTA: electric yellow fill + black ink, 4px control radius.
-   The single yellow accent on the page — everything else stays olive/neutral. */
-.kk-cta {
-  display: inline-block;
-  background: #fef102;
-  color: #000000;
+:root {
+  /* ---- Brand primitives ---------------------------------- */
+  --kk-yellow: #fef102;
+  --kk-yellow-600: #e6d902;
+  --kk-yellow-100: #fffce0;
+  --kk-olive: #8e8701;
+  --kk-olive-700: #6f6a01;
+  --kk-olive-100: #f3f1cc;
+  --kk-black: #000000;
+  --kk-white: #ffffff;
+
+  /* ---- Neutrals (Ant Design grey) ------------------------- */
+  --grey-200: #f0f0f0;
+  --grey-300: #d9d9d9;
+  --grey-a50: #fafafb;
+
+  /* ---- Semantic aliases ----------------------------------- */
+  --surface-page: var(--grey-a50);
+  --border-subtle: var(--grey-200);
+  --border-default: var(--grey-300);
+  --focus-ring-accent: rgba(142, 135, 1, 0.45);
+
+  /* ---- Radii (4px controls / 8px cards) -------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* ---- Elevation & motion ---------------------------------- */
+  --shadow-z1: 0px 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-cta: 0 12px 20px -8px rgba(254, 241, 2, 0.55);
+  --shadow-focus-accent: 0 0 0 2px var(--focus-ring-accent);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-base: 200ms;
+}
+
+/* ============================================================
+   Wave 1 — Chrome
+   ============================================================ */
+
+/* App canvas: near-white page like the dashboard (#FAFAFB), light mode only */
+html:not(.dark) body,
+html:not(.dark) #background-color {
+  background: var(--surface-page);
+}
+
+/* Navbar: hairline border, no shadow (bordered-not-shadowed) */
+#navbar {
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+html.dark #navbar {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active nav = solid yellow with black ink (design-system hover/press states),
+   4px control radius. Same in both modes — yellow carries black ink everywhere. */
+#sidebar li[data-active='true'] > a,
+#sidebar a[aria-current='page'] {
+  background: var(--kk-yellow);
+  color: var(--kk-black);
+  border-radius: var(--radius-sm);
+}
+
+/* Sidebar hover: tint wash instead of grey */
+#sidebar a:not([aria-current='page']):hover {
+  background: var(--kk-yellow-100);
+  color: var(--kk-black);
+  border-radius: var(--radius-sm);
+}
+html.dark #sidebar a:not([aria-current='page']):hover {
+  background: rgba(254, 241, 2, 0.08);
+  color: var(--kk-white);
+}
+
+/* Eyebrows: tiny ALL-CAPS overline with wide tracking (the one place caps are allowed) */
+eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.kk-cta:hover {
-  background: #e6d902; /* --kk-yellow-600 */
-  color: #000000;
+/* ============================================================
+   Wave 2 — Type ramp + shape
+   ============================================================ */
+
+/* Heading ramp per apps/frontend/src/themes/typography.ts
+   (h1 38 / h2 30 / h3 24 / h4 20 / h5 16, weight 600,
+   tracking −0.02em on h1/h2, −0.01em below) */
+#page-title,
+mdx-content h1 {
+  font-weight: 600;
+  font-size: 2.375rem;
+  line-height: 1.21;
+  letter-spacing: -0.02em;
+}
+mdx-content h2 {
+  font-weight: 600;
+  font-size: 1.875rem;
+  line-height: 1.27;
+  letter-spacing: -0.02em;
+}
+mdx-content h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.33;
+  letter-spacing: -0.01em;
+}
+mdx-content h4 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+mdx-content h5 {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
+/* Controls: 4px radius (buttons, chips, inputs, search) */
+tryit-button,
+method-pill,
+method-nav-pill,
+#search-bar-entry,
+#search-bar-entry-mobile,
+#topbar-cta-button,
+#api-playground-input,
+#api-playground-input input {
+  border-radius: var(--radius-sm);
+}
+
+/* Cards & code panels: 8px radius, bordered not shadowed, z1 lift on hover only */
+card,
+code-block,
+code-group,
+frame,
+#request-example,
+#response-example {
+  border-radius: var(--radius-md);
+}
+card {
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+  transition: box-shadow var(--dur-base) var(--ease-standard);
+}
+card:hover {
+  box-shadow: var(--shadow-z1);
+}
+html.dark card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Focus: olive ring (design-system --shadow-focus-accent) */
+mdx-content a:focus-visible,
+tryit-button:focus-visible,
+#sidebar a:focus-visible,
 .kk-cta:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(142, 135, 1, 0.45); /* --shadow-focus-accent (olive) */
+  box-shadow: var(--shadow-focus-accent);
+}
+
+/* ============================================================
+   Landing CTA (shipped in PR #5, kept here)
+   Primary CTA: electric yellow fill + black ink, 4px control
+   radius, hero-only yellow glow. The single yellow accent on
+   the page besides active nav.
+   ============================================================ */
+.kk-cta {
+  display: inline-block;
+  background: var(--kk-yellow);
+  color: var(--kk-black);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-cta);
+  transition: background var(--dur-base) var(--ease-standard);
+}
+.kk-cta:hover {
+  background: var(--kk-yellow-600);
+  color: var(--kk-black);
 }
