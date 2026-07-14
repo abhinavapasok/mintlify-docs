@@ -281,13 +281,25 @@ html.dark .card {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Focus: olive ring (design-system --shadow-focus-accent) */
-.mdx-content a:focus-visible,
-button.tryit-button:focus-visible,
-#sidebar a:focus-visible,
-.kk-cta:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus-accent);
+/* Focus: visible outline site-wide (WCAG 2.4.7). Olive in light
+   mode, yellow in dark — outline (not box-shadow) so the ring
+   renders regardless of overflow/shadow context. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--kk-olive-700) !important;
+  outline-offset: 2px;
+}
+html.dark a:focus-visible,
+html.dark button:focus-visible,
+html.dark input:focus-visible,
+html.dark select:focus-visible,
+html.dark textarea:focus-visible,
+html.dark [tabindex]:focus-visible {
+  outline-color: var(--kk-yellow) !important;
 }
 
 /* ============================================================
@@ -322,46 +334,58 @@ div.method-pill {
   font-weight: 500;
   border: 1px solid transparent;
 }
-div.method-pill[class*='green'] {
+div.method-pill[class*='green'],
+.method-nav-pill[class*='green'] {
   background: var(--success-lighter) !important;
-  color: var(--success-dark) !important;
+  color: var(--success) !important;
   border-color: var(--success-light);
 }
-div.method-pill[class*='blue'] {
+div.method-pill[class*='blue'],
+.method-nav-pill[class*='blue'] {
   background: var(--info-lighter) !important;
-  color: #006d75 !important;
+  color: var(--info) !important;
   border-color: var(--info-light);
 }
 div.method-pill[class*='amber'],
 div.method-pill[class*='yellow'],
-div.method-pill[class*='orange'] {
+div.method-pill[class*='orange'],
+.method-nav-pill[class*='amber'],
+.method-nav-pill[class*='yellow'],
+.method-nav-pill[class*='orange'] {
   background: var(--warning-lighter) !important;
-  color: var(--warning-dark) !important;
+  color: var(--warning) !important;
   border-color: var(--warning-light);
 }
-div.method-pill[class*='red'] {
+div.method-pill[class*='red'],
+.method-nav-pill[class*='red'] {
   background: var(--error-lighter) !important;
-  color: var(--error-dark) !important;
+  color: var(--error) !important;
   border-color: var(--error-light);
 }
-html.dark div.method-pill[class*='green'] {
+html.dark div.method-pill[class*='green'],
+html.dark .method-nav-pill[class*='green'] {
   background: rgba(82, 196, 26, 0.12) !important;
   color: var(--success-light) !important;
   border-color: rgba(82, 196, 26, 0.35);
 }
-html.dark div.method-pill[class*='blue'] {
+html.dark div.method-pill[class*='blue'],
+html.dark .method-nav-pill[class*='blue'] {
   background: rgba(19, 194, 194, 0.12) !important;
   color: var(--info-light) !important;
   border-color: rgba(19, 194, 194, 0.35);
 }
 html.dark div.method-pill[class*='amber'],
 html.dark div.method-pill[class*='yellow'],
-html.dark div.method-pill[class*='orange'] {
+html.dark div.method-pill[class*='orange'],
+html.dark .method-nav-pill[class*='amber'],
+html.dark .method-nav-pill[class*='yellow'],
+html.dark .method-nav-pill[class*='orange'] {
   background: rgba(250, 173, 20, 0.12) !important;
   color: var(--warning-light) !important;
   border-color: rgba(250, 173, 20, 0.35);
 }
-html.dark div.method-pill[class*='red'] {
+html.dark div.method-pill[class*='red'],
+html.dark .method-nav-pill[class*='red'] {
   background: rgba(255, 77, 79, 0.12) !important;
   color: var(--error-light) !important;
   border-color: rgba(255, 77, 79, 0.35);
@@ -456,8 +480,8 @@ div[class*='rounded-md']:not(.card),
 /* ============================================================
    Landing CTA (shipped in PR #5, kept here)
    Primary CTA: electric yellow fill + black ink, 4px control
-   radius, hero-only yellow glow. The single yellow accent on
-   the page besides active nav.
+   radius. No glow — bordered-not-shadowed applies to CTAs too.
+   The single yellow accent on the page besides active nav.
    ============================================================ */
 .kk-cta {
   display: inline-block;
@@ -467,7 +491,7 @@ div[class*='rounded-md']:not(.card),
   padding: 10px 20px;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  box-shadow: var(--shadow-cta);
+  box-shadow: none;
   transition: background var(--dur-base) var(--ease-standard);
 }
 .kk-cta:hover {
