@@ -6,28 +6,88 @@
     "description": "Read-only public gateway covering 18 commerce domains (orders, invoices, quotations, payments, items, parties, sales returns, and lookup/reference data). Every endpoint is authenticated with an API key and is provisioned/managed from the KomKits dashboard Developer Console."
   },
   "servers": [
-    { "url": "https://api.komkits.com/api/public/v1" }
+    {
+      "url": "https://api.komkits.com/api/public/v1"
+    }
   ],
-  "security": [{ "bearerAuth": [] }],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "tags": [
-    { "name": "order", "description": "Sales orders. Core commerce domain — full request/response examples." },
-    { "name": "invoice", "description": "Sales invoices. Core commerce domain — full request/response examples." },
-    { "name": "quotation", "description": "Sales quotations. Core commerce domain — full request/response examples." },
-    { "name": "paymentIn", "description": "Incoming payments (receipts). Core commerce domain — full request/response examples." },
-    { "name": "paymentOut", "description": "Outgoing payments (vendor/expense payments). Core commerce domain — full request/response examples." },
-    { "name": "payment", "description": "Generic payment ledger entries (direction-agnostic). Resolved as core-depth alongside paymentIn/paymentOut since it is structurally and semantically identical (a financial-transaction domain) — not explicitly named in either D-06 depth list." },
-    { "name": "items", "description": "Catalog items (products/services). Core commerce domain — full request/response examples." },
-    { "name": "party", "description": "Customers, vendors, and other business parties. Core commerce domain — full request/response examples." },
-    { "name": "salesReturn", "description": "Sales returns. Core commerce domain — full request/response examples." },
-    { "name": "brand", "description": "Product brands. Lookup domain — schema-only plus one response example." },
-    { "name": "category", "description": "Product categories. Lookup domain — schema-only plus one response example." },
-    { "name": "channel", "description": "Sales channels. Lookup domain — schema-only plus one response example." },
-    { "name": "country", "description": "Country reference data. Filter-only by design — states/cities sub-resources are intentionally excluded from the public gateway allow-list. No by-id GET exists for this domain." },
-    { "name": "manufacturers", "description": "Item manufacturers. Lookup domain — schema-only plus one response example." },
-    { "name": "itemPrice", "description": "Per-channel item pricing. Lookup domain — schema-only plus one response example." },
-    { "name": "itemStock", "description": "Per-location item stock levels. Lookup domain — schema-only plus one response example." },
-    { "name": "location", "description": "Warehouse/store locations. Lookup domain — schema-only plus one response example." },
-    { "name": "paymentAccount", "description": "Payment accounts (bank/cash/card). Lookup domain — schema-only plus one response example." }
+    {
+      "name": "Orders",
+      "description": "Sales orders. Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Invoices",
+      "description": "Sales invoices. Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Quotations",
+      "description": "Sales quotations. Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Incoming payments",
+      "description": "Incoming payments (receipts). Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Outgoing payments",
+      "description": "Outgoing payments (vendor/expense payments). Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Payments",
+      "description": "Generic payment ledger entries (direction-agnostic). Resolved as core-depth alongside paymentIn/paymentOut since it is structurally and semantically identical (a financial-transaction domain) — not explicitly named in either D-06 depth list."
+    },
+    {
+      "name": "Items",
+      "description": "Catalog items (products/services). Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Parties",
+      "description": "Customers, vendors, and other business parties. Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Sales returns",
+      "description": "Sales returns. Core commerce domain — full request/response examples."
+    },
+    {
+      "name": "Brands",
+      "description": "Product brands. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Categories",
+      "description": "Product categories. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Sales channels",
+      "description": "Sales channels. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Countries",
+      "description": "Country reference data. Filter-only by design — states/cities sub-resources are intentionally excluded from the public gateway allow-list. No by-id GET exists for this domain."
+    },
+    {
+      "name": "Manufacturers",
+      "description": "Item manufacturers. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Item prices",
+      "description": "Per-channel item pricing. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Item stock",
+      "description": "Per-location item stock levels. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Locations",
+      "description": "Warehouse/store locations. Lookup domain — schema-only plus one response example."
+    },
+    {
+      "name": "Payment accounts",
+      "description": "Payment accounts (bank/cash/card). Lookup domain — schema-only plus one response example."
+    }
   ],
   "components": {
     "securitySchemes": {
@@ -41,7 +101,10 @@
       "ErrorResponse": {
         "type": "object",
         "properties": {
-          "error": { "type": "string", "description": "Human-readable error message. Exact copy transcribed from publicApiAuth.js for auth failures." }
+          "error": {
+            "type": "string",
+            "description": "Human-readable error message. Exact copy transcribed from publicApiAuth.js for auth failures."
+          }
         }
       },
       "SuccessEnvelope": {
@@ -50,11 +113,22 @@
           "data": {
             "description": "Response payload. A single resource object for by-id lookups, or an array of resource objects for filter/list operations."
           },
-          "message": { "type": "string" },
-          "trace": { "type": "string", "nullable": true },
-          "status": { "type": "boolean" },
-          "code": { "type": "integer" },
-          "reqId": { "type": "string" }
+          "message": {
+            "type": "string"
+          },
+          "trace": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "reqId": {
+            "type": "string"
+          }
         }
       }
     },
@@ -63,11 +137,25 @@
         "description": "Missing, malformed, unknown, or wrong-hash API key. Exact copy from publicApiAuth.js: \"Missing or malformed Authorization header. Expected: Bearer <api-key>\", \"Malformed API key\", or \"Invalid API key\" (same message for unknown key and wrong hash — no enumeration oracle).",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
             "examples": {
-              "missingHeader": { "value": { "error": "Missing or malformed Authorization header. Expected: Bearer <api-key>" } },
-              "malformedKey": { "value": { "error": "Malformed API key" } },
-              "invalidKey": { "value": { "error": "Invalid API key" } }
+              "missingHeader": {
+                "value": {
+                  "error": "Missing or malformed Authorization header. Expected: Bearer <api-key>"
+                }
+              },
+              "malformedKey": {
+                "value": {
+                  "error": "Malformed API key"
+                }
+              },
+              "invalidKey": {
+                "value": {
+                  "error": "Invalid API key"
+                }
+              }
             }
           }
         }
@@ -76,8 +164,12 @@
         "description": "API key has been revoked.",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-            "example": { "error": "API key has been revoked" }
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "API key has been revoked"
+            }
           }
         }
       },
@@ -85,7 +177,9 @@
         "description": "Resource not found for the given id.",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
           }
         }
       },
@@ -93,7 +187,9 @@
         "description": "Request body failed Joi validation.",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/SuccessEnvelope" }
+            "schema": {
+              "$ref": "#/components/schemas/SuccessEnvelope"
+            }
           }
         }
       },
@@ -101,14 +197,16 @@
         "description": "Rate limit exceeded.",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
           }
         }
       }
     }
   },
   "webhooks": {
-    "invoiceCreated": {
+    "Invoice created": {
       "post": {
         "summary": "invoice.created",
         "description": "Fired when a new invoice is created. Payload shape is identical for every event in the catalogue — only `event` and `reference_*` fields vary.",
@@ -118,11 +216,23 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "event": { "type": "string", "example": "invoice.created" },
-                  "business_code": { "type": "string" },
-                  "reference_id": { "type": "integer" },
-                  "reference_number": { "type": "string" },
-                  "timestamp": { "type": "string", "format": "date-time" }
+                  "event": {
+                    "type": "string",
+                    "example": "invoice.created"
+                  },
+                  "business_code": {
+                    "type": "string"
+                  },
+                  "reference_id": {
+                    "type": "integer"
+                  },
+                  "reference_number": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
                 }
               },
               "example": {
@@ -136,11 +246,13 @@
           }
         },
         "responses": {
-          "200": { "description": "Acknowledge receipt (any 2xx)." }
+          "200": {
+            "description": "Acknowledge receipt (any 2xx)."
+          }
         }
       }
     },
-    "orderCreated": {
+    "Order created": {
       "post": {
         "summary": "order.created",
         "description": "Fired when a new sales order is created.",
@@ -150,11 +262,23 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "event": { "type": "string", "example": "order.created" },
-                  "business_code": { "type": "string" },
-                  "reference_id": { "type": "integer" },
-                  "reference_number": { "type": "string" },
-                  "timestamp": { "type": "string", "format": "date-time" }
+                  "event": {
+                    "type": "string",
+                    "example": "order.created"
+                  },
+                  "business_code": {
+                    "type": "string"
+                  },
+                  "reference_id": {
+                    "type": "integer"
+                  },
+                  "reference_number": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
                 }
               },
               "example": {
@@ -168,11 +292,13 @@
           }
         },
         "responses": {
-          "200": { "description": "Acknowledge receipt (any 2xx)." }
+          "200": {
+            "description": "Acknowledge receipt (any 2xx)."
+          }
         }
       }
     },
-    "paymentRecorded": {
+    "Payment recorded": {
       "post": {
         "summary": "payment.recorded",
         "description": "Fired when a payment (in or out) is recorded.",
@@ -182,11 +308,23 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "event": { "type": "string", "example": "payment.recorded" },
-                  "business_code": { "type": "string" },
-                  "reference_id": { "type": "integer" },
-                  "reference_number": { "type": "string" },
-                  "timestamp": { "type": "string", "format": "date-time" }
+                  "event": {
+                    "type": "string",
+                    "example": "payment.recorded"
+                  },
+                  "business_code": {
+                    "type": "string"
+                  },
+                  "reference_id": {
+                    "type": "integer"
+                  },
+                  "reference_number": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
                 }
               },
               "example": {
@@ -200,11 +338,13 @@
           }
         },
         "responses": {
-          "200": { "description": "Acknowledge receipt (any 2xx)." }
+          "200": {
+            "description": "Acknowledge receipt (any 2xx)."
+          }
         }
       }
     },
-    "returnCreated": {
+    "Return created": {
       "post": {
         "summary": "return.created",
         "description": "Fired when a new sales return is created.",
@@ -214,11 +354,23 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "event": { "type": "string", "example": "return.created" },
-                  "business_code": { "type": "string" },
-                  "reference_id": { "type": "integer" },
-                  "reference_number": { "type": "string" },
-                  "timestamp": { "type": "string", "format": "date-time" }
+                  "event": {
+                    "type": "string",
+                    "example": "return.created"
+                  },
+                  "business_code": {
+                    "type": "string"
+                  },
+                  "reference_id": {
+                    "type": "integer"
+                  },
+                  "reference_number": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
                 }
               },
               "example": {
@@ -232,7 +384,9 @@
           }
         },
         "responses": {
-          "200": { "description": "Acknowledge receipt (any 2xx)." }
+          "200": {
+            "description": "Acknowledge receipt (any 2xx)."
+          }
         }
       }
     }
@@ -240,18 +394,30 @@
   "paths": {
     "/order/details": {
       "get": {
-        "tags": ["order"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Get a sales order by id",
         "operationId": "getOrderDetailsById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the order." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the order."
+          }
         ],
         "responses": {
           "200": {
             "description": "Order found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 1042,
@@ -265,10 +431,10 @@
                     "order_type": "sales",
                     "order_date": "2026-07-01",
                     "due_date": "2026-07-15",
-                    "subtotal": 43000.00,
-                    "tax_total": 3730.50,
-                    "total_amount": 45230.50,
-                    "payed_amount": 20000.00,
+                    "subtotal": 43000.0,
+                    "tax_total": 3730.5,
+                    "total_amount": 45230.5,
+                    "payed_amount": 20000.0,
                     "created_at": "2026-07-01T09:12:00Z"
                   },
                   "message": "Success",
@@ -280,14 +446,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/order/details/filter": {
       "post": {
-        "tags": ["order"],
+        "tags": [
+          "Orders"
+        ],
         "summary": "Filter/list sales orders",
         "operationId": "getAllOrderDetails",
         "requestBody": {
@@ -296,21 +468,54 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "order_code": { "type": "string", "nullable": true },
-                  "party_name": { "type": "string", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
-                  "payment_status": { "type": "string", "nullable": true },
-                  "qc_status": { "type": "string", "nullable": true },
-                  "payment_method": { "type": "string", "nullable": true },
-                  "parent_order_code": { "type": "string", "nullable": true },
-                  "location_code": { "type": "string", "nullable": true },
-                  "order_type": { "type": "string", "nullable": true },
+                  "order_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "payment_status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "qc_status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "payment_method": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "parent_order_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "location_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "order_type": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "order_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     },
                     "description": "Range filter; 'from' must be <= 'to'."
                   },
@@ -318,18 +523,58 @@
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "order_by": { "type": "string", "enum": ["id", "order_code", "order_date", "due_date", "party_name", "status", "location_code", "total_amount", "created_at"], "default": "id" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"], "default": "ASC" },
-                  "page": { "type": "integer", "minimum": 1, "default": 1 },
-                  "page_size": { "type": "integer", "minimum": 1, "maximum": 100, "default": 10 }
+                  "order_by": {
+                    "type": "string",
+                    "enum": [
+                      "id",
+                      "order_code",
+                      "order_date",
+                      "due_date",
+                      "party_name",
+                      "status",
+                      "location_code",
+                      "total_amount",
+                      "created_at"
+                    ],
+                    "default": "id"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ],
+                    "default": "ASC"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "default": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 10
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "status": "processing", "page": 1, "page_size": 10 }
+              "example": {
+                "status": "processing",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -338,11 +583,25 @@
             "description": "Paginated list of orders.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 1042, "order_code": "ORD-2026-01042", "party_name": "Coastal Retail Traders", "status": "processing", "total_amount": 45230.50 },
-                    { "id": 1043, "order_code": "ORD-2026-01043", "party_name": "Northline Distributors", "status": "processing", "total_amount": 18200.00 }
+                    {
+                      "id": 1042,
+                      "order_code": "ORD-2026-01042",
+                      "party_name": "Coastal Retail Traders",
+                      "status": "processing",
+                      "total_amount": 45230.5
+                    },
+                    {
+                      "id": 1043,
+                      "order_code": "ORD-2026-01043",
+                      "party_name": "Northline Distributors",
+                      "status": "processing",
+                      "total_amount": 18200.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -353,26 +612,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/invoice/details": {
       "get": {
-        "tags": ["invoice"],
+        "tags": [
+          "Invoices"
+        ],
         "summary": "Get an invoice by id",
         "operationId": "getInvoiceDetailsById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the invoice." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the invoice."
+          }
         ],
         "responses": {
           "200": {
             "description": "Invoice found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 8891,
@@ -384,11 +661,11 @@
                     "location_code": "WH-BLR-01",
                     "invoice_date": "2026-07-02",
                     "due_date": "2026-07-16",
-                    "subtotal": 40000.00,
-                    "tax_total": 4800.00,
-                    "discount_total": 500.00,
-                    "additional_charges": 250.00,
-                    "total_amount": 44550.00,
+                    "subtotal": 40000.0,
+                    "tax_total": 4800.0,
+                    "discount_total": 500.0,
+                    "additional_charges": 250.0,
+                    "total_amount": 44550.0,
                     "created_by": 12
                   },
                   "message": "Success",
@@ -400,14 +677,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/invoice/details/filter": {
       "post": {
-        "tags": ["invoice"],
+        "tags": [
+          "Invoices"
+        ],
         "summary": "Filter/list invoices",
         "operationId": "getAllInvoiceDetails",
         "requestBody": {
@@ -416,37 +699,88 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "invoice_number": { "type": "string", "nullable": true },
-                  "party_name": { "type": "string", "nullable": true },
-                  "party_id": { "type": "integer", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
-                  "payment_status": { "type": "string", "nullable": true },
-                  "location_code": { "type": "string", "nullable": true },
+                  "invoice_number": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "payment_status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "location_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "invoice_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
                   "due_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "created_by": { "type": "integer", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "created_by": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "payment_status": "unpaid", "page": 1, "page_size": 10 }
+              "example": {
+                "payment_status": "unpaid",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -455,11 +789,25 @@
             "description": "Paginated list of invoices.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 8891, "invoice_number": "INV-2026-08891", "party_name": "Coastal Retail Traders", "payment_status": "unpaid", "total_amount": 44550.00 },
-                    { "id": 8892, "invoice_number": "INV-2026-08892", "party_name": "Northline Distributors", "payment_status": "paid", "total_amount": 12750.00 }
+                    {
+                      "id": 8891,
+                      "invoice_number": "INV-2026-08891",
+                      "party_name": "Coastal Retail Traders",
+                      "payment_status": "unpaid",
+                      "total_amount": 44550.0
+                    },
+                    {
+                      "id": 8892,
+                      "invoice_number": "INV-2026-08892",
+                      "party_name": "Northline Distributors",
+                      "payment_status": "paid",
+                      "total_amount": 12750.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -470,26 +818,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/quotation/details": {
       "get": {
-        "tags": ["quotation"],
+        "tags": [
+          "Quotations"
+        ],
         "summary": "Get a quotation by id",
         "operationId": "getQuotationDetailsById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the quotation." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the quotation."
+          }
         ],
         "responses": {
           "200": {
             "description": "Quotation found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 512,
@@ -499,7 +865,7 @@
                     "location_code": "WH-BLR-01",
                     "quotation_date": "2026-06-28",
                     "due_date": "2026-07-12",
-                    "total_amount": 18200.00
+                    "total_amount": 18200.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -510,14 +876,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/quotation/details/filter": {
       "post": {
-        "tags": ["quotation"],
+        "tags": [
+          "Quotations"
+        ],
         "summary": "Filter/list quotations",
         "operationId": "getAllQuotationDetails",
         "requestBody": {
@@ -526,34 +898,76 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "quotation_number": { "type": "string", "nullable": true },
-                  "party_name": { "type": "string", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
-                  "location_code": { "type": "string", "nullable": true },
+                  "quotation_number": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "location_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "quotation_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
                   "due_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "status": "sent", "page": 1, "page_size": 10 }
+              "example": {
+                "status": "sent",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -562,11 +976,25 @@
             "description": "Paginated list of quotations.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 512, "quotation_number": "QUO-2026-00512", "party_name": "Northline Distributors", "status": "sent", "total_amount": 18200.00 },
-                    { "id": 513, "quotation_number": "QUO-2026-00513", "party_name": "Coastal Retail Traders", "status": "draft", "total_amount": 9400.00 }
+                    {
+                      "id": 512,
+                      "quotation_number": "QUO-2026-00512",
+                      "party_name": "Northline Distributors",
+                      "status": "sent",
+                      "total_amount": 18200.0
+                    },
+                    {
+                      "id": 513,
+                      "quotation_number": "QUO-2026-00513",
+                      "party_name": "Coastal Retail Traders",
+                      "status": "draft",
+                      "total_amount": 9400.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -577,26 +1005,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/payment-in/details": {
       "get": {
-        "tags": ["paymentIn"],
+        "tags": [
+          "Incoming payments"
+        ],
         "summary": "Get an incoming payment by id",
         "operationId": "getPaymentInById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the payment-in record." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the payment-in record."
+          }
         ],
         "responses": {
           "200": {
             "description": "Payment-in record found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 2201,
@@ -606,7 +1052,7 @@
                     "status": "Completed",
                     "payment_in_date": "2026-07-03",
                     "payment_account_id": 7,
-                    "total_amount": 20000.00
+                    "total_amount": 20000.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -617,14 +1063,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/payment-in/details/filter": {
       "post": {
-        "tags": ["paymentIn"],
+        "tags": [
+          "Incoming payments"
+        ],
         "summary": "Filter/list incoming payments",
         "operationId": "getAllPaymentIns",
         "requestBody": {
@@ -633,25 +1085,58 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "party_id": { "type": "integer", "nullable": true },
-                  "category": { "type": "string", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
+                  "party_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "category": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "payment_in_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "status": "Completed", "page": 1, "page_size": 10 }
+              "example": {
+                "status": "Completed",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -660,11 +1145,25 @@
             "description": "Paginated list of incoming payments.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 2201, "party_name": "Coastal Retail Traders", "category": "sales_receipt", "status": "Completed", "total_amount": 20000.00 },
-                    { "id": 2202, "party_name": "Northline Distributors", "category": "sales_receipt", "status": "Pending", "total_amount": 9400.00 }
+                    {
+                      "id": 2201,
+                      "party_name": "Coastal Retail Traders",
+                      "category": "sales_receipt",
+                      "status": "Completed",
+                      "total_amount": 20000.0
+                    },
+                    {
+                      "id": 2202,
+                      "party_name": "Northline Distributors",
+                      "category": "sales_receipt",
+                      "status": "Pending",
+                      "total_amount": 9400.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -675,26 +1174,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/payment-out/details": {
       "get": {
-        "tags": ["paymentOut"],
+        "tags": [
+          "Outgoing payments"
+        ],
         "summary": "Get an outgoing payment by id",
         "operationId": "getPaymentOutById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the payment-out record." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the payment-out record."
+          }
         ],
         "responses": {
           "200": {
             "description": "Payment-out record found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 3305,
@@ -703,7 +1220,7 @@
                     "category": "vendor_payment",
                     "status": "Completed",
                     "payment_out_date": "2026-07-04",
-                    "total_amount": 12000.00
+                    "total_amount": 12000.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -714,14 +1231,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/payment-out/details/filter": {
       "post": {
-        "tags": ["paymentOut"],
+        "tags": [
+          "Outgoing payments"
+        ],
         "summary": "Filter/list outgoing payments",
         "operationId": "getAllPaymentOuts",
         "requestBody": {
@@ -730,25 +1253,58 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "party_id": { "type": "integer", "nullable": true },
-                  "category": { "type": "string", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
+                  "party_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "category": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "payment_out_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "status": "Completed", "page": 1, "page_size": 10 }
+              "example": {
+                "status": "Completed",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -757,11 +1313,25 @@
             "description": "Paginated list of outgoing payments.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 3305, "party_name": "Acme Freight Logistics", "category": "vendor_payment", "status": "Completed", "total_amount": 12000.00 },
-                    { "id": 3306, "party_name": "Bright Packaging Co", "category": "expense", "status": "Pending", "total_amount": 2100.00 }
+                    {
+                      "id": 3305,
+                      "party_name": "Acme Freight Logistics",
+                      "category": "vendor_payment",
+                      "status": "Completed",
+                      "total_amount": 12000.0
+                    },
+                    {
+                      "id": 3306,
+                      "party_name": "Bright Packaging Co",
+                      "category": "expense",
+                      "status": "Pending",
+                      "total_amount": 2100.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -772,26 +1342,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/payment": {
       "get": {
-        "tags": ["payment"],
+        "tags": [
+          "Payments"
+        ],
         "summary": "Get a payment ledger entry by id",
         "operationId": "getPaymentById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the payment record." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the payment record."
+          }
         ],
         "responses": {
           "200": {
             "description": "Payment found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 5510,
@@ -800,7 +1388,7 @@
                     "payment_mode": "bank_transfer",
                     "payment_direction": "in",
                     "currency_code": "INR",
-                    "amount": 20000.00,
+                    "amount": 20000.0,
                     "payment_date": "2026-07-03"
                   },
                   "message": "Success",
@@ -812,14 +1400,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/payment/filter": {
       "post": {
-        "tags": ["payment"],
+        "tags": [
+          "Payments"
+        ],
         "summary": "Filter/list payment ledger entries",
         "operationId": "getAllPayments",
         "requestBody": {
@@ -828,19 +1422,56 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "party_id": { "type": "integer", "nullable": true },
-                  "payment_account_id": { "type": "integer", "nullable": true },
-                  "payment_mode": { "type": "string", "maxLength": 20, "nullable": true },
-                  "payment_direction": { "type": "string", "nullable": true, "description": "Enum sourced from PAYMENT_DIRECTION constant." },
-                  "currency_code": { "type": "string", "minLength": 3, "maxLength": 3, "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "party_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "payment_account_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "payment_mode": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "nullable": true
+                  },
+                  "payment_direction": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Enum sourced from PAYMENT_DIRECTION constant."
+                  },
+                  "currency_code": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "payment_direction": "in", "page": 1, "page_size": 10 }
+              "example": {
+                "payment_direction": "in",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -849,11 +1480,25 @@
             "description": "Paginated list of payments.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 5510, "party_id": 3421, "payment_mode": "bank_transfer", "payment_direction": "in", "amount": 20000.00 },
-                    { "id": 5511, "party_id": 5210, "payment_mode": "cheque", "payment_direction": "out", "amount": 12000.00 }
+                    {
+                      "id": 5510,
+                      "party_id": 3421,
+                      "payment_mode": "bank_transfer",
+                      "payment_direction": "in",
+                      "amount": 20000.0
+                    },
+                    {
+                      "id": 5511,
+                      "party_id": 5210,
+                      "payment_mode": "cheque",
+                      "payment_direction": "out",
+                      "amount": 12000.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -864,26 +1509,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/items": {
       "get": {
-        "tags": ["items"],
+        "tags": [
+          "Items"
+        ],
         "summary": "Get a catalog item by id",
         "operationId": "getItemsById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the item." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the item."
+          }
         ],
         "responses": {
           "200": {
             "description": "Item found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 9931,
@@ -906,14 +1569,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/items/filter": {
       "post": {
-        "tags": ["items"],
+        "tags": [
+          "Items"
+        ],
         "summary": "Filter/list catalog items",
         "operationId": "getAllItems",
         "requestBody": {
@@ -922,25 +1591,76 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "sku_code": { "type": "string", "nullable": true },
-                  "hsn_sac": { "type": "string", "nullable": true },
-                  "name": { "type": "string", "nullable": true },
-                  "item_type": { "type": "string", "nullable": true },
-                  "category_id": { "type": "integer", "nullable": true },
-                  "category": { "type": "string", "nullable": true },
-                  "brand_id": { "type": "integer", "nullable": true },
-                  "brand": { "type": "string", "nullable": true },
-                  "manufacturer_id": { "type": "integer", "nullable": true },
-                  "manufacturer": { "type": "string", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "sku_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "hsn_sac": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "item_type": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "category_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "category": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "brand_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "brand": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "manufacturer_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "manufacturer": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "brand": "KomKits Essentials", "page": 1, "page_size": 10 }
+              "example": {
+                "brand": "KomKits Essentials",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -949,11 +1669,23 @@
             "description": "Paginated list of items.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 9931, "sku_code": "SKU-TSHIRT-BLK-M", "name": "Classic Crew T-Shirt - Black - M", "brand": "KomKits Essentials" },
-                    { "id": 9932, "sku_code": "SKU-TSHIRT-BLK-L", "name": "Classic Crew T-Shirt - Black - L", "brand": "KomKits Essentials" }
+                    {
+                      "id": 9931,
+                      "sku_code": "SKU-TSHIRT-BLK-M",
+                      "name": "Classic Crew T-Shirt - Black - M",
+                      "brand": "KomKits Essentials"
+                    },
+                    {
+                      "id": 9932,
+                      "sku_code": "SKU-TSHIRT-BLK-L",
+                      "name": "Classic Crew T-Shirt - Black - L",
+                      "brand": "KomKits Essentials"
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -964,26 +1696,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/party": {
       "get": {
-        "tags": ["party"],
+        "tags": [
+          "Parties"
+        ],
         "summary": "Get a party by id",
         "operationId": "getPartyById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the party." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the party."
+          }
         ],
         "responses": {
           "200": {
             "description": "Party found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 3421,
@@ -1004,14 +1754,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/party/filter": {
       "post": {
-        "tags": ["party"],
+        "tags": [
+          "Parties"
+        ],
         "summary": "Filter/list parties",
         "operationId": "getAllParties",
         "requestBody": {
@@ -1020,21 +1776,61 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "party_name": { "type": "string", "nullable": true },
-                  "email": { "type": "string", "format": "email", "nullable": true },
-                  "mobile_number": { "type": "string", "nullable": true },
-                  "party_type": { "type": "string", "nullable": true },
-                  "party_category": { "type": "string", "nullable": true },
-                  "city": { "type": "string", "nullable": true },
-                  "country": { "type": "string", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "party_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "nullable": true
+                  },
+                  "mobile_number": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_type": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_category": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "city": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "country": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "party_type": "customer", "page": 1, "page_size": 10 }
+              "example": {
+                "party_type": "customer",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -1043,11 +1839,23 @@
             "description": "Paginated list of parties.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 3421, "party_name": "Coastal Retail Traders", "party_type": "customer", "city": "Bengaluru" },
-                    { "id": 5210, "party_name": "Acme Freight Logistics", "party_type": "vendor", "city": "Chennai" }
+                    {
+                      "id": 3421,
+                      "party_name": "Coastal Retail Traders",
+                      "party_type": "customer",
+                      "city": "Bengaluru"
+                    },
+                    {
+                      "id": 5210,
+                      "party_name": "Acme Freight Logistics",
+                      "party_type": "vendor",
+                      "city": "Chennai"
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -1058,26 +1866,44 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/sales_return/details": {
       "get": {
-        "tags": ["salesReturn"],
+        "tags": [
+          "Sales returns"
+        ],
         "summary": "Get a sales return by id",
         "operationId": "getSalesReturnDetailsById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the sales return." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the sales return."
+          }
         ],
         "responses": {
           "200": {
             "description": "Sales return found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": {
                     "id": 771,
@@ -1088,7 +1914,7 @@
                     "location_code": "WH-BLR-01",
                     "sales_return_date": "2026-07-05",
                     "due_date": "2026-07-10",
-                    "total_amount": 3200.00
+                    "total_amount": 3200.0
                   },
                   "message": "Success",
                   "trace": null,
@@ -1099,14 +1925,20 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/sales_return/details/filter": {
       "post": {
-        "tags": ["salesReturn"],
+        "tags": [
+          "Sales returns"
+        ],
         "summary": "Filter/list sales returns",
         "operationId": "getAllSalesReturnDetails",
         "requestBody": {
@@ -1115,35 +1947,80 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "sales_return_number": { "type": "string", "nullable": true },
-                  "party_name": { "type": "string", "nullable": true },
-                  "status": { "type": "string", "nullable": true },
-                  "payment_status": { "type": "string", "nullable": true },
-                  "location_code": { "type": "string", "nullable": true },
+                  "sales_return_number": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "party_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "payment_status": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "location_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
                   "sales_return_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
                   "due_date": {
                     "type": "object",
                     "nullable": true,
                     "properties": {
-                      "from": { "type": "string", "format": "date" },
-                      "to": { "type": "string", "format": "date" }
+                      "from": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "to": {
+                        "type": "string",
+                        "format": "date"
+                      }
                     }
                   },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               },
-              "example": { "status": "approved", "page": 1, "page_size": 10 }
+              "example": {
+                "status": "approved",
+                "page": 1,
+                "page_size": 10
+              }
             }
           }
         },
@@ -1152,11 +2029,25 @@
             "description": "Paginated list of sales returns.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
                   "data": [
-                    { "id": 771, "sales_return_number": "SR-2026-00771", "party_name": "Coastal Retail Traders", "status": "approved", "total_amount": 3200.00 },
-                    { "id": 772, "sales_return_number": "SR-2026-00772", "party_name": "Northline Distributors", "status": "pending", "total_amount": 850.00 }
+                    {
+                      "id": 771,
+                      "sales_return_number": "SR-2026-00771",
+                      "party_name": "Coastal Retail Traders",
+                      "status": "approved",
+                      "total_amount": 3200.0
+                    },
+                    {
+                      "id": 772,
+                      "sales_return_number": "SR-2026-00772",
+                      "party_name": "Northline Distributors",
+                      "status": "pending",
+                      "total_amount": 850.0
+                    }
                   ],
                   "message": "Success",
                   "trace": null,
@@ -1167,41 +2058,74 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/brand": {
       "get": {
-        "tags": ["brand"],
+        "tags": [
+          "Brands"
+        ],
         "summary": "Get a brand by id",
         "operationId": "getBrandById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the brand." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the brand."
+          }
         ],
         "responses": {
           "200": {
             "description": "Brand found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 41, "name": "KomKits Essentials", "description": "In-house apparel essentials line", "is_active": true },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_br1nd0"
+                  "data": {
+                    "id": 41,
+                    "name": "KomKits Essentials",
+                    "description": "In-house apparel essentials line",
+                    "is_active": true
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_br1nd0"
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/brand/filter": {
       "post": {
-        "tags": ["brand"],
+        "tags": [
+          "Brands"
+        ],
         "summary": "Filter/list brands",
         "operationId": "getAllBrands",
         "requestBody": {
@@ -1210,13 +2134,36 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "brandId": { "type": "integer", "nullable": true },
-                  "name": { "type": "string", "nullable": true },
-                  "is_active": { "type": "boolean", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "brandId": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "is_active": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1224,42 +2171,83 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of brands.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of brands.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/category": {
       "get": {
-        "tags": ["category"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Get a category by id",
         "operationId": "getCategoryById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the category." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the category."
+          }
         ],
         "responses": {
           "200": {
             "description": "Category found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 12, "name": "Apparel", "level": 1 },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_ct2g0ry"
+                  "data": {
+                    "id": 12,
+                    "name": "Apparel",
+                    "level": 1
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_ct2g0ry"
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/category/filter": {
       "post": {
-        "tags": ["category"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Filter/list categories",
         "operationId": "getAllCategorys",
         "requestBody": {
@@ -1268,13 +2256,37 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "name": { "type": "string", "nullable": true },
-                  "level": { "type": "integer", "minimum": 1, "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 0 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "level": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1282,41 +2294,84 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of categories.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of categories.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/channel": {
       "get": {
-        "tags": ["channel"],
+        "tags": [
+          "Sales channels"
+        ],
         "summary": "Get a sales channel by id",
         "operationId": "getChannelById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the channel." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the channel."
+          }
         ],
         "responses": {
           "200": {
             "description": "Channel found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 3, "name": "Online Store", "channel_type": "web", "transaction_type": "sales" },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_ch4nn3l" }
+                  "data": {
+                    "id": 3,
+                    "name": "Online Store",
+                    "channel_type": "web",
+                    "transaction_type": "sales"
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_ch4nn3l"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/channel/filter": {
       "post": {
-        "tags": ["channel"],
+        "tags": [
+          "Sales channels"
+        ],
         "summary": "Filter/list sales channels",
         "operationId": "getAllChannels",
         "requestBody": {
@@ -1325,14 +2380,40 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "name": { "type": "string", "nullable": true },
-                  "channel_type": { "type": "string", "nullable": true },
-                  "transaction_type": { "type": "string", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "channel_type": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "transaction_type": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1340,23 +2421,44 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of channels.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of channels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/country": {
       "post": {
-        "tags": ["country"],
+        "tags": [
+          "Countries"
+        ],
         "summary": "List countries",
         "description": "Filter-only by design — country has no by-id GET; states/cities sub-resources are intentionally excluded from the D-02 curated public-gateway allow-list.",
         "operationId": "getCountries",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { "type": "object", "additionalProperties": false, "description": "No filter fields are accepted; the full country reference list is returned." }
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "description": "No filter fields are accepted; the full country reference list is returned."
+              }
             }
           }
         },
@@ -1365,48 +2467,97 @@
             "description": "Full country reference list.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": [{ "country": "India", "country_code2": "IN" }, { "country": "United States", "country_code2": "US" }],
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_c0untry"
+                  "data": [
+                    {
+                      "country": "India",
+                      "country_code2": "IN"
+                    },
+                    {
+                      "country": "United States",
+                      "country_code2": "US"
+                    }
+                  ],
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_c0untry"
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/manufacturers": {
       "get": {
-        "tags": ["manufacturers"],
+        "tags": [
+          "Manufacturers"
+        ],
         "summary": "Get a manufacturer by id",
         "operationId": "getManufacturersById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the manufacturer." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the manufacturer."
+          }
         ],
         "responses": {
           "200": {
             "description": "Manufacturer found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 7, "name": "Coastal Garments Pvt Ltd", "description": "Apparel manufacturing partner", "is_active": true },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_m4nuf4c" }
+                  "data": {
+                    "id": 7,
+                    "name": "Coastal Garments Pvt Ltd",
+                    "description": "Apparel manufacturing partner",
+                    "is_active": true
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_m4nuf4c"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/manufacturers/filter": {
       "post": {
-        "tags": ["manufacturers"],
+        "tags": [
+          "Manufacturers"
+        ],
         "summary": "Filter/list manufacturers",
         "operationId": "getAllManufacturerss",
         "requestBody": {
@@ -1415,13 +2566,36 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "name": { "type": "string", "nullable": true },
-                  "is_active": { "type": "boolean", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "is_active": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1429,41 +2603,86 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of manufacturers.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of manufacturers.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/item_price": {
       "get": {
-        "tags": ["itemPrice"],
+        "tags": [
+          "Item prices"
+        ],
         "summary": "Get an item price by id",
         "operationId": "getItemPriceById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the item-price record." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the item-price record."
+          }
         ],
         "responses": {
           "200": {
             "description": "Item price found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 601, "sku_code": "SKU-TSHIRT-BLK-M", "channel_id": 3, "currency_code": "INR", "tax_mode": "with_tax", "price": 799.00 },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_1t3mpr1c" }
+                  "data": {
+                    "id": 601,
+                    "sku_code": "SKU-TSHIRT-BLK-M",
+                    "channel_id": 3,
+                    "currency_code": "INR",
+                    "tax_mode": "with_tax",
+                    "price": 799.0
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_1t3mpr1c"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/item_price/filter": {
       "post": {
-        "tags": ["itemPrice"],
+        "tags": [
+          "Item prices"
+        ],
         "summary": "Filter/list item prices",
         "operationId": "getAllItemPrices",
         "requestBody": {
@@ -1472,15 +2691,45 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "sku_code": { "type": "string", "nullable": true },
-                  "channel_id": { "type": "integer", "nullable": true },
-                  "currency_code": { "type": "string", "nullable": true },
-                  "tax_mode": { "type": "string", "nullable": true, "description": "Enum sourced from TAX_MODE constant." },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "sku_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "channel_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "currency_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "tax_mode": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Enum sourced from TAX_MODE constant."
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1488,41 +2737,85 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of item prices.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of item prices.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/item_stock": {
       "get": {
-        "tags": ["itemStock"],
+        "tags": [
+          "Item stock"
+        ],
         "summary": "Get an item stock record by id",
         "operationId": "getItemStockById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the item-stock record." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the item-stock record."
+          }
         ],
         "responses": {
           "200": {
             "description": "Item stock found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 8801, "sku_code": "SKU-TSHIRT-BLK-M", "channel_id": 3, "location_id": 1, "quantity": 240 },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_1t3mst0ck" }
+                  "data": {
+                    "id": 8801,
+                    "sku_code": "SKU-TSHIRT-BLK-M",
+                    "channel_id": 3,
+                    "location_id": 1,
+                    "quantity": 240
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_1t3mst0ck"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/item_stock/filter": {
       "post": {
-        "tags": ["itemStock"],
+        "tags": [
+          "Item stock"
+        ],
         "summary": "Filter/list item stock records",
         "operationId": "getAllItemStocks",
         "requestBody": {
@@ -1531,14 +2824,40 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "sku_code": { "type": "string", "nullable": true },
-                  "channel_id": { "type": "integer", "nullable": true },
-                  "location_id": { "type": "integer", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "sku_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "channel_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "location_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1546,41 +2865,86 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of item stock records.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of item stock records.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/location": {
       "get": {
-        "tags": ["location"],
+        "tags": [
+          "Locations"
+        ],
         "summary": "Get a location by id",
         "operationId": "getLocationById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the location." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the location."
+          }
         ],
         "responses": {
           "200": {
             "description": "Location found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 1, "name": "Bengaluru Main Warehouse", "type": "warehouse", "location_code": "WH-BLR-01", "city": "Bengaluru", "country": "India" },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_l0c4t10n" }
+                  "data": {
+                    "id": 1,
+                    "name": "Bengaluru Main Warehouse",
+                    "type": "warehouse",
+                    "location_code": "WH-BLR-01",
+                    "city": "Bengaluru",
+                    "country": "India"
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_l0c4t10n"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/location/filter": {
       "post": {
-        "tags": ["location"],
+        "tags": [
+          "Locations"
+        ],
         "summary": "Filter/list locations",
         "operationId": "getAllLocations",
         "requestBody": {
@@ -1589,17 +2953,54 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": { "type": "string", "nullable": true },
-                  "type": { "type": "string", "nullable": true, "description": "Enum sourced from LOCATION_TYPE constant." },
-                  "contact_name": { "type": "string", "nullable": true },
-                  "contact_email": { "type": "string", "format": "email", "nullable": true },
-                  "city": { "type": "string", "nullable": true },
-                  "country": { "type": "string", "nullable": true },
-                  "location_code": { "type": "string", "nullable": true },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Enum sourced from LOCATION_TYPE constant."
+                  },
+                  "contact_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "contact_email": {
+                    "type": "string",
+                    "format": "email",
+                    "nullable": true
+                  },
+                  "city": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "country": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "location_code": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1607,41 +3008,86 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of locations.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of locations.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     },
     "/payment_account": {
       "get": {
-        "tags": ["paymentAccount"],
+        "tags": [
+          "Payment accounts"
+        ],
         "summary": "Get a payment account by id",
         "operationId": "getPaymentAccountById",
         "parameters": [
-          { "name": "id", "in": "query", "required": true, "schema": { "type": "integer" }, "description": "Internal numeric id of the payment account." }
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Internal numeric id of the payment account."
+          }
         ],
         "responses": {
           "200": {
             "description": "Payment account found.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                },
                 "example": {
-                  "data": { "id": 7, "party_id": 3421, "account_name": "Coastal Retail Traders - HDFC Current", "payment_mode": "bank", "currency_code": "INR", "current_balance_amount": 154200.00 },
-                  "message": "Success", "trace": null, "status": true, "code": 200, "reqId": "req_p4ym4cc0" }
+                  "data": {
+                    "id": 7,
+                    "party_id": 3421,
+                    "account_name": "Coastal Retail Traders - HDFC Current",
+                    "payment_mode": "bank",
+                    "currency_code": "INR",
+                    "current_balance_amount": 154200.0
+                  },
+                  "message": "Success",
+                  "trace": null,
+                  "status": true,
+                  "code": 200,
+                  "reqId": "req_p4ym4cc0"
+                }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          }
         }
       }
     },
     "/payment_account/filter": {
       "post": {
-        "tags": ["paymentAccount"],
+        "tags": [
+          "Payment accounts"
+        ],
         "summary": "Filter/list payment accounts",
         "operationId": "getAllPaymentAccounts",
         "requestBody": {
@@ -1650,14 +3096,41 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": { "type": "integer", "nullable": true },
-                  "party_id": { "type": "integer", "nullable": true },
-                  "account_name": { "type": "string", "nullable": true },
-                  "payment_mode": { "type": "string", "nullable": true, "description": "Enum sourced from PAYMENT_MODE constant." },
-                  "order_by": { "type": "string" },
-                  "order_direction": { "type": "string", "enum": ["ASC", "DESC"] },
-                  "page": { "type": "integer", "minimum": 1 },
-                  "page_size": { "type": "integer", "minimum": 1 }
+                  "id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "party_id": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "account_name": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "payment_mode": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Enum sourced from PAYMENT_MODE constant."
+                  },
+                  "order_by": {
+                    "type": "string"
+                  },
+                  "order_direction": {
+                    "type": "string",
+                    "enum": [
+                      "ASC",
+                      "DESC"
+                    ]
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1665,10 +3138,25 @@
           }
         },
         "responses": {
-          "200": { "description": "Paginated list of payment accounts.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SuccessEnvelope" } } } },
-          "401": { "$ref": "#/components/responses/Unauthorized401" },
-          "403": { "$ref": "#/components/responses/Forbidden403" },
-          "422": { "$ref": "#/components/responses/UnprocessableEntity422" }
+          "200": {
+            "description": "Paginated list of payment accounts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden403"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity422"
+          }
         }
       }
     }
