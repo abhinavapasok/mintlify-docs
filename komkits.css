@@ -367,7 +367,9 @@ html.dark div.method-pill[class*='red'] {
   border-color: rgba(255, 77, 79, 0.35);
 }
 
-/* "required" pill — FE error chip (main text / lighter bg / light border) */
+/* "required" pill — FE error chip (main text / lighter bg / light border).
+   Uses Mintlify's stable data-component-part hook. */
+[data-component-part='field-required-pill'],
 .mdx-content div[class*='rounded-md'][class*='text-red-600'] {
   background: var(--error-lighter) !important;
   color: var(--error) !important;
@@ -375,10 +377,46 @@ html.dark div.method-pill[class*='red'] {
   border-radius: var(--radius-sm) !important;
   font-weight: 500;
 }
+html.dark [data-component-part='field-required-pill'],
 html.dark .mdx-content div[class*='rounded-md'][class*='text-red-600'] {
   background: rgba(255, 77, 79, 0.12) !important;
   color: var(--error-light) !important;
   border-color: rgba(255, 77, 79, 0.35);
+}
+
+/* Field type pills ("string", "integer", "header") — FE secondary chip */
+[data-component-part='field-info-pill'] {
+  background: var(--grey-100) !important;
+  color: var(--grey-600) !important;
+  border: 1px solid var(--grey-300);
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500;
+}
+html.dark [data-component-part='field-info-pill'] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--text-secondary) !important;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Code / request / response panels — FE card chrome:
+   8px radius (root ships 14px), hairline border, no drop shadow,
+   sunken header bar with divider. Token colors are Shiki inline
+   styles (github-light / dark-plus) — not overridable from CSS. */
+[data-component-part='code-block-root'] {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: none !important;
+}
+html.dark [data-component-part='code-block-root'] {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+[data-component-part='code-group-tab-bar'] {
+  background: var(--surface-sunken, var(--grey-100));
+  border-bottom: 1px solid var(--border-subtle);
+}
+html.dark [data-component-part='code-group-tab-bar'] {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================================
