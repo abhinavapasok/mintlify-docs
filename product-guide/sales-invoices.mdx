@@ -1,0 +1,106 @@
+---
+title: "Sales invoices"
+description: "Create, edit, and collect payment against sales invoices."
+---
+
+{/* WORKED EXAMPLE for the product guide template. Status: In review.
+   TODO (Apsara): verify exact button labels against the app, add screenshots, and confirm the FAQ answers with the dev team. */}
+
+## Overview
+
+Sales invoices record what you have sold to a customer and how much they owe you. An invoice can be created from scratch or converted from a sales order or quotation, and it drives your receivables: recording payments against an invoice updates the customer's outstanding balance, and returns are capped against what was actually invoiced and paid.
+
+## Before you start
+
+- **Permission needed:** _Invoices → View_ to browse, _Add_ to create, _Edit_ to modify. Ask an administrator if an option is missing for you.
+- **Settings to review:** document numbering (invoice number format and next number), default tax mode (inclusive or exclusive), and rounding behavior.
+
+## Key concepts
+
+| Term | Meaning |
+| --- | --- |
+| Tax mode | Whether item prices already include tax (_inclusive_) or tax is added on top (_exclusive_). The mode changes how line totals and the invoice total are calculated. |
+| Discount | A reduction applied per line or on the invoice total, as a percentage or a fixed amount. |
+| Additional fee | Extra charges (for example delivery) added to the invoice total, with their own tax treatment. |
+| Rounding | An automatic adjustment so the payable total lands on a convenient amount. Shown as its own line in totals. |
+| Outstanding amount | Invoice total minus payments recorded so far. |
+
+## Common workflows
+
+### Create an invoice
+
+<Steps>
+  <Step title="Open the invoice list and select Create">
+    Go to **Sales → Invoices** and select the create action.
+  </Step>
+  <Step title="Choose the customer">
+    Search by name or phone number. The customer's billing details and outstanding balance load automatically.
+  </Step>
+  <Step title="Add items">
+    Search the item list and set quantity and price for each line. Line totals update as you type, following the invoice's tax mode.
+  </Step>
+  <Step title="Apply discounts, fees, and taxes">
+    Add line or invoice-level discounts, additional fees, and confirm the tax treatment. The totals panel shows the running breakdown.
+  </Step>
+  <Step title="Record a payment (optional) and save">
+    You can record a full or partial payment at creation, or save the invoice unpaid. After saving, the invoice appears in the list with its payment status.
+  </Step>
+</Steps>
+
+{/* TODO (Apsara): screenshot of the create-invoice form → /images/invoice-create-form.png */}
+
+### Record a payment against an existing invoice
+
+<Steps>
+  <Step title="Open the invoice">
+    Find it in **Sales → Invoices** and open it.
+  </Step>
+  <Step title="Add a payment">
+    Choose the payment action, then enter the amount, payment mode, and date. Partial payments are allowed; the outstanding amount updates immediately.
+  </Step>
+</Steps>
+
+### Edit an invoice
+
+Open the invoice and choose the edit action. Items, discounts, fees, and payments can be adjusted; totals are recalculated with the same rules as creation. Changes are recorded in the audit log.
+
+### Cancel an invoice
+
+<Note>
+  Cancelling is not the same as deleting — a cancelled invoice stays in the list for traceability, and linked stock and balances are reversed.
+</Note>
+
+{/* TODO (Apsara): confirm cancellation flow and what happens to recorded payments. */}
+
+## Field reference
+
+| Field | What it does |
+| --- | --- |
+| Invoice number | Generated from document numbering settings. |
+| Invoice date | The date used for reports and due-date calculations. |
+| Tax mode | Inclusive or exclusive — see Key concepts. Set per invoice; defaults from settings. |
+| Discount | Percent or amount, per line or on the total. |
+| Additional fee | Named extra charge with its own tax treatment. |
+| Rounding | Automatic adjustment line on the total. |
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Why did my line total change when I switched tax mode?">
+    In inclusive mode the entered price already contains tax, so the pre-tax amount is derived from it. In exclusive mode tax is added on top of the entered price. Switching modes recalculates every line.
+  </Accordion>
+
+  <Accordion title="Can I refund more than the customer paid?">
+    No. Refunds issued through returns are capped by the amount actually paid against the invoice.
+  </Accordion>
+
+  <Accordion title="Who changed this invoice?">
+    Administrators can see every change in the audit log, including who made it and when.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+- [Sales orders](/product-guide/sales-orders) — orders can be converted into invoices
+- [Returns](/product-guide/returns) — return invoiced items and issue capped refunds
+- [Payments](/product-guide/payments) — how payments in and out are tracked
