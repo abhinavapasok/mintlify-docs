@@ -38,6 +38,34 @@
         ]
       },
       {
+        "tab": "Product guide",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "product-guide/introduction",
+              "product-guide/template"
+            ]
+          },
+          {
+            "group": "Modules",
+            "pages": [
+              "product-guide/sales-invoices",
+              "product-guide/sales-orders",
+              "product-guide/quotations",
+              "product-guide/purchase-invoices",
+              "product-guide/purchase-orders",
+              "product-guide/returns",
+              "product-guide/payments",
+              "product-guide/inventory-items",
+              "product-guide/parties",
+              "product-guide/reports-dashboards",
+              "product-guide/settings-permissions"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API Reference",
         "groups": [
           {
