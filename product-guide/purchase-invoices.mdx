@@ -1,50 +1,153 @@
 ---
-title: "Purchase invoices"
-description: "Record supplier bills and track what you owe."
+title: "Purchase invoices                                                "
+description: "Create and manage invoices for purchases from suppliers."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  Purchase invoices record purchases made from suppliers and include supplier, item, pricing, tax, payment terms, and invoice details.
 </Note>
 
 ## Overview
 
-\[What purchase invoices do: record bills received from suppliers, update stock, and track payables. Mention AI invoice capture if released.\]
+The Purchase invoices module allows you to create invoices for goods or services purchased from suppliers.
+
+You can use this module to:
+
+- Create purchase invoices
+- Select a supplier
+- Set invoice and due dates
+- Define payment terms
+- Add products or services to the invoice
+- Specify quantity and price
+- Apply discounts and tax categories
+- Add notes and terms and conditions
+- Add a bank account to the invoice
+- Review the grand total
+- Save the purchase invoice
 
 ## Before you start
 
-- **Permission needed:** \[TODO\]
-- **Settings to review:** \[TODO\]
+- **Permission needed:** Access to the **Purchase invoices** module.
+- **Settings to review:** Make sure suppliers, items, tax settings, and payment-related settings are configured before creating a purchase invoice.
 
 ## Key concepts
 
 | Term | Meaning |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Purchase invoice | A document that records a purchase made from a supplier. |
+| Supplier | The party from whom the goods or services are purchased. |
+| Payment terms | Defines when the payment for the purchase is due. |
+| Invoice date | The date on which the purchase invoice is created or issued. |
+| Due date | The date by which payment is due. |
+| Tax category | Defines the tax applicable to an item. |
+| Grand total | The final amount payable for the purchase invoice. |
 
 ## Common workflows
 
-### \[TODO: Record a purchase invoice\]
+## Create a purchase invoice
 
-\[TODO\]
+1. Open **Purchase invoices** from the navigation menu.
+2. Click **New** or **Create Purchase Invoice**.
+3. Enter the **Invoice Date**.
+4. Enter the **Due Date**.
+5. Select the **Payment Terms**.
+6. Select a **Supplier** using **Search Supplier**.
+7. Review the **Bill From Address** and **Ship From Address** populated for the selected supplier.
+8. Add items to the invoice.
+9. Enter the required **Quantity** and review the **Price**.
+10. Select the applicable **Tax Category**.
+11. Add a **Discount**, if applicable.
+12. Enter **Notes**, if required.
+13. Enter **Terms and Conditions**, if required.
+14. Select a **Bank Account**, if required.
+15. Review the **Grand Total**.
+16. Click **Create Purchase Invoice**.
 
-### \[TODO: Pay a supplier\]
+## Add an item to a purchase invoice
 
-\[TODO\]
+The Items section allows you to add products to the purchase invoice.
 
-## Field reference
+1. Use **Filter by Category** to narrow down the available items, if required.
+2. Search for the required product using **Search for existing products**.
+3. Enter the **Quantity**.
+4. Click **Add Item**.
+5. Review the item details in the invoice table.
+6. Update the applicable price, discount, or tax category if required.
+
+The invoice item table includes:
 
 | Field | What it does |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Item | Identifies the product being purchased. |
+| Qty | Specifies the quantity purchased. |
+| Price | Specifies the price of the item. |
+| Discount | Applies a discount to the item. |
+| Tax Category | Specifies the applicable tax category. |
+| Tax Amount | Displays the tax amount for the item. |
+| Amount | Displays the resulting item amount. |
+| Action | Provides actions available for the item. |
 
-## FAQs
+## Select a supplier
 
-\[TODO\]
+1. Click **Search Supplier**.
+2. Search for the required supplier.
+3. Select the supplier.
+4. Review the supplier information.
 
-## Related
+Once a supplier is selected, the **Bill From Address** and **Ship From Address** can be populated automatically based on the supplier's information.
 
-- [Purchase orders](/product-guide/purchase-orders)
-- [Payments](/product-guide/payments)
+## Add notes and terms and conditions
+
+Use the **Notes** field to add additional information related to the purchase invoice.
+
+Use **Terms and Conditions** to specify any applicable terms related to the purchase.
+
+Field reference
+
+| Field | Required | What it does |
+| --- | --- | --- |
+| Invoice Date | Yes | Specifies the invoice date. |
+| Due Date | Yes | Specifies when payment is due. |
+| Payment Terms | No\* | Defines the payment terms for the purchase. |
+| Purchase Invoice Number | System-generated | Displays the purchase invoice number. |
+| Supplier | Yes | Selects the supplier associated with the purchase. |
+| Bill From Address | — | Displays the supplier's billing address. |
+| Ship From Address | — | Displays the supplier's shipping address. |
+| Filter by Category | No | Filters available items by category. |
+| Search for existing products | No | Searches for products to add to the invoice. |
+| Quantity | Yes for added items | Specifies the quantity of the selected item. |
+| Notes | No | Adds additional information to the invoice. |
+| Terms and Conditions | No | Adds terms and conditions to the invoice. |
+| Bank Account | No | Selects the bank account to display on the document. |
+
+# FAQs
+
+### How is the Purchase Invoice Number generated?
+
+The **Purchase Invoice Number** is automatically assigned when the purchase invoice is saved.
+
+### Can I add multiple items to a purchase invoice?
+
+Yes. You can search for products and add them to the **Items** section of the invoice.
+
+### Can I add a discount to an item?
+
+Yes. The item table includes a **Discount** field.
+
+### Can I apply tax to an item?
+
+Yes. You can select a **Tax Category** for an item.
+
+### Can I add notes to a purchase invoice?
+
+Yes. You can enter additional information in the **Notes** field.
+
+### Can I add terms and conditions?
+
+Yes. The purchase invoice includes a **Terms and Conditions** field.
+
+### Can I add a bank account to the invoice?
+
+Yes. Use **Add Bank Account** in the Bank Account section.
