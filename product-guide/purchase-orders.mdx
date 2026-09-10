@@ -1,49 +1,121 @@
 ---
 title: "Purchase orders"
-description: "Order stock from suppliers and receive it into inventory."
+description: "Create and manage purchase orders for suppliers."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  Purchase orders help you record items you intend to purchase from suppliers, including quantities, prices, discounts, taxes, payment terms, and delivery details.
 </Note>
 
 ## Overview
 
-\[What purchase orders do: raise orders to suppliers, track receipt, convert to purchase invoices. Include create and cancel flows.\]
+The Purchase orders module allows you to create purchase orders for suppliers before completing a purchase.
+
+You can use this module to:
+
+- Create purchase orders
+- Select a supplier
+- Set the order date and due date
+- Define payment terms
+- Add products to the purchase order
+- Specify item quantities and prices
+- Apply discounts and tax categories
+- Add notes
+- Add terms and conditions
+- Review the grand total
+- Create and manage purchase orders
 
 ## Before you start
 
-- **Permission needed:** \[TODO\]
-- **Settings to review:** \[TODO\]
+- **Permission needed:** Access to the **Purchase orders** module.
+- **Settings to review:** Make sure suppliers, items, tax settings, and payment-related settings are configured before creating a purchase order.
 
 ## Key concepts
 
 | Term | Meaning |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Purchase order | A document used to request or authorize the purchase of goods or services from a supplier. |
+| Supplier | The party from whom the goods or services are being purchased. |
+| Order date | The date on which the purchase order is created. |
+| Due date | The date associated with the expected payment or due date. |
+| Payment terms | Defines the agreed payment terms for the purchase. |
+| Tax category | Specifies the tax category applicable to an item. |
+| Grand total | The final calculated amount of the purchase order. |
 
 ## Common workflows
 
-### \[TODO: Create a purchase order\]
+## Create a purchase order
 
-\[TODO\]
-
-### \[TODO: Cancel a purchase order\]
-
-\[TODO\]
+1. Open **Purchase orders** from the navigation menu.
+2. Click **New** or **Create Purchase Order**.
+3. Enter the **Order Date**.
+4. Enter the **Due Date**.
+5. Select the **Payment Terms**.
+6. Select a **Supplier** using **Search Supplier**.
+7. Review the **Bill From Address** and **Ship From Address**.
+8. Add the required items.
+9. Enter the quantity for each item.
+10. Review the item price.
+11. Apply a discount or select a tax category, if applicable.
+12. Add **Notes**, if required.
+13. Add **Terms and Conditions**, if required.
+14. Review the **Grand Total**.
+15. Click **Create Purchase Order**.
 
 ## Field reference
 
-| Field | What it does |
-| --- | --- |
-| \[TODO\] | \[TODO\] |
+| Field | Required | What it does |
+| --- | --- | --- |
+| Order Date | Yes | Specifies the purchase order date. |
+| Due Date | Yes | Specifies the due date associated with the purchase order. |
+| Payment Terms | No\* | Defines the payment terms for the purchase. |
+| Purchase Order Number | System-generated | Displays the purchase order number assigned by the system. |
+| Supplier | Yes | Selects the supplier associated with the purchase order. |
+| Bill From Address | — | Displays the supplier's billing address. |
+| Ship From Address | — | Displays the supplier's shipping address. |
+| Filter by Category | No | Filters the available items by category. |
+| Search for existing products | No | Searches for products to add to the purchase order. |
+| Quantity | Yes for added items | Specifies the quantity of the selected item. |
+| Notes | No | Adds additional information to the purchase order. |
+| Terms and Conditions | No | Adds terms and conditions to the purchase order. |
+| Grand Total | System-calculated | Displays the total amount of the purchase order. |
 
 ## FAQs
 
-\[TODO\]
+### What is a purchase order?
+
+A purchase order is a document used to record goods or services that you intend to purchase from a supplier.
+
+### Can I add multiple items to a purchase order?
+
+Yes. You can search for products and add multiple items to the **Items** section.
+
+### Can I apply a discount to an item?
+
+Yes. The item table includes a **Discount** field.
+
+### Can I apply tax to an item?
+
+Yes. You can select the applicable **Tax Category** for an item.
+
+### Can I add notes to a purchase order?
+
+Yes. You can add additional information in the **Notes** field.
+
+### Can I add terms and conditions?
+
+Yes. You can enter applicable terms in the **Terms and Conditions** field.
+
+### Is the Purchase Order Number entered manually?
+
+No. The screenshot shows that the **Purchase Order Number** is automatically assigned when the purchase order is saved.
 
 ## Related
 
-- [Purchase invoices](/product-guide/purchase-invoices)
+- **Purchase invoices**
+- **Inventory and items**
+- **Customers and suppliers**
+- **Payments**
+- **Returns**

@@ -1,50 +1,153 @@
 ---
 title: "Quotations"
-description: "Send price quotes to customers and convert accepted quotes."
+description: "Create and manage quotations for customers."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  Quotations allow you to prepare and share pricing details for products or services before creating a sales transaction.
 </Note>
 
 ## Overview
 
-\[What quotations do: propose prices to a customer before committing, then convert to an order or invoice when accepted.\]
+The Quotations module allows you to create quotations for customers. You can add products, specify quantities and prices, apply discounts and taxes, and include additional notes and terms and conditions.
+
+You can use this module to:
+
+- Create quotations
+- Select a customer
+- Set quotation and due dates
+- Define payment terms
+- Add products or services
+- Specify quantities and prices
+- Apply discounts and tax categories
+- Add notes
+- Add terms and conditions
+- Add a bank account
+- Review the grand total
+- Save a quotation as a draft
+- Create a quotation
 
 ## Before you start
 
-- **Permission needed:** \[TODO\]
-- **Settings to review:** \[TODO\]
+- **Permission needed:** Access to the **Quotations** module.
+- **Settings to review:** Make sure customers, items, tax settings, payment terms, and bank account details are configured before creating a quotation.
 
 ## Key concepts
 
 | Term | Meaning |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Quotation | A document that provides pricing and other details for products or services offered to a customer. |
+| Customer | The party to whom the quotation is provided. |
+| Quotation date | The date on which the quotation is created. |
+| Due date | The date associated with the quotation's validity or due date. |
+| Payment terms | Defines the payment terms associated with the quotation. |
+| Tax category | Specifies the tax category applicable to an item. |
+| Grand total | The final calculated amount of the quotation. |
 
 ## Common workflows
 
-### \[TODO: Create a quotation\]
+## Create a quotation
 
-\[TODO\]
+1. Open **Quotations** from the navigation menu.
+2. Click **New** or **Create Quotation**.
+3. Enter the **Quotation Date**.
+4. Enter the **Due Date**.
+5. Select the **Payment Terms**.
+6. Select a customer using **Search Customer**.
+7. Review the **Bill To** and **Ship To** addresses.
+8. Add the required items.
+9. Enter the quantity for each item.
+10. Review the item price.
+11. Apply a discount or select a tax category, if applicable.
+12. Add **Notes**, if required.
+13. Add **Terms and Conditions**, if required.
+14. Add or select a **Bank Account**, if required.
+15. Review the **Grand Total**.
+16. Click **Create Quotation**.
 
-### \[TODO: Convert a quotation\]
+## Add an item to a quotation
 
-\[TODO\]
+Use the **Items** section to add products or services to the quotation.
 
-## Field reference
+1. Use **Filter by Category** to filter the available items, if required.
+2. Search for the required product using **Search for existing products**.
+3. Enter the **Quantity**.
+4. Click **Add Item**.
+5. Review the item details.
+6. Update the price, discount, or tax category, if required.
+
+The item table contains:
 
 | Field | What it does |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Item | Identifies the product or service being quoted. |
+| Qty | Specifies the quantity being quoted. |
+| Price | Specifies the price of the item. |
+| Discount | Applies a discount to the item. |
+| Tax Category | Specifies the applicable tax category. |
+| Tax Amount | Displays the calculated tax amount. |
+| Amount | Displays the calculated item amount. |
+| Action | Provides available actions for the item. |
+
+## Field reference
+
+| Field | Required | What it does |
+| --- | --- | --- |
+| Quotation Date | Yes | Specifies the quotation date. |
+| Due Date | Yes | Specifies the due date associated with the quotation. |
+| Payment Terms | No\* | Defines the payment terms for the quotation. |
+| Quotation Number | System-generated | Displays the quotation number assigned by the system. |
+| Customer | Yes | Selects the customer associated with the quotation. |
+| Bill To | — | Displays the customer's billing address. |
+| Ship To | — | Displays the customer's shipping address. |
+| Filter by Category | No | Filters the available items by category. |
+| Search for existing products | No | Searches for products to add to the quotation. |
+| Quantity | Yes for added items | Specifies the quantity of the selected item. |
+| Notes | No | Adds additional information to the quotation. |
+| Terms and Conditions | No | Adds terms and conditions to the quotation. |
+| Bank Account | No | Selects the bank account to display on the document. |
+| Grand Total | System-calculated | Displays the total amount of the quotation. |
 
 ## FAQs
 
-\[TODO\]
+### What is a quotation?
+
+A quotation is a document that provides pricing and other details for products or services offered to a customer.
+
+### Can I add multiple items to a quotation?
+
+Yes. You can search for products and add multiple items to the **Items** section.
+
+### Can I apply a discount to an item?
+
+Yes. The item table includes a **Discount** field.
+
+### Can I apply tax to an item?
+
+Yes. You can select the applicable **Tax Category** for an item.
+
+### Can I save a quotation without creating it?
+
+Yes. Click **Save As Draft** to save the quotation and complete it later.
+
+### Can I add notes to a quotation?
+
+Yes. You can add additional information in the **Notes** field.
+
+### Can I add terms and conditions?
+
+Yes. You can enter applicable information in the **Terms and Conditions** field.
+
+### Can I add a bank account to a quotation?
+
+Yes. Use **Add Bank Account** in the Bank Account section.
 
 ## Related
 
-- [Sales orders](/product-guide/sales-orders)
-- [Sales invoices](/product-guide/sales-invoices)
+- **Customers and suppliers**
+- **Inventory and items**
+- **Sales invoices**
+- **Sales orders**
+- **Purchase orders**
