@@ -1,54 +1,186 @@
 ---
 title: "Purchase Returns"
-description: "Handle sales and purchase returns with capped refunds."
+description: "Record and manage products returned to suppliers."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  Purchase returns allow you to record items returned to suppliers and optionally associate the return with an existing purchase invoice.
 </Note>
 
 ## Overview
 
-\[What returns do: return sold items (sales return) or send stock back to suppliers (purchase return). Cover refund caps — refunds cannot exceed what was paid.\]
+The Purchase returns module allows you to record products returned to suppliers. You can select a supplier, optionally link the return to a purchase invoice, add the returned items, and review the total return amount.
+
+You can use this module to:
+
+- Create purchase returns
+- Select a supplier
+- Set the return date
+- Optionally select a purchase invoice
+- Add returned items
+- Specify item quantities
+- Review prices, discounts, and taxes
+- Add notes
+- Add terms and conditions
+- Add a signature
+- Review the grand total
 
 ## Before you start
 
-- **Permission needed:** \[TODO\]
-- **Settings to review:** \[TODO\]
+- **Permission needed:** Access to the **Purchase returns** module.
+- **Settings to review:** Make sure suppliers, items, tax settings, and purchase invoices are available before creating a purchase return.
 
 ## Key concepts
 
 | Term | Meaning |
 | --- | --- |
-| Refund cap | \[TODO: refunds are limited by the amount actually paid on the linked invoice\] |
+| Purchase return | A record of products returned to a supplier. |
+| Supplier | The party to whom the purchased products are returned. |
+| Return date | The date on which the purchase return is recorded. |
+| Purchase invoice | An existing purchase invoice that can optionally be associated with the return. |
+| Tax category | Specifies the applicable tax category for a returned item. |
+| Grand total | The total calculated amount of the purchase return. |
 
 ## Common workflows
 
-### \[TODO: Create a sales return\]
+## Create a purchase return
 
-\[TODO\]
+1. Open **Purchase returns** from the navigation menu.
+2. Click **New**.
+3. Select the **Return Date**.
+4. Select the **Supplier** using **Search Supplier**.
+5. Review the **Bill From Address** and **Ship From Address**.
+6. Select a **Purchase Invoice**, if required.
+7. Add the items being returned.
+8. Enter the quantity for each item.
+9. Review the price, discount, and tax details.
+10. Add **Notes**, if required.
+11. Add **Terms and Conditions**, if required.
+12. Review the **Grand Total**.
+13. Add a signature, if required.
+14. Click **Create Purchase Return**.
 
-### \[TODO: Issue a refund\]
+<Note>
+  The **Purchase Return Number** is automatically assigned when the return is saved.
+</Note>
 
-\[TODO\]
+## Select a supplier
 
-### \[TODO: Create a purchase return\]
+1. Click **Search Supplier**.
+2. Search for the required supplier.
+3. Select the supplier.
+4. Review the supplier information.
 
-\[TODO\]
+The **Bill From Address** and **Ship From Address** are populated automatically when a supplier is selected.
 
-## Field reference
+## Select a purchase invoice
+
+A purchase invoice can optionally be associated with the purchase return.
+
+1. Select the required supplier.
+2. Go to **Purchase Invoice (Optional)**.
+3. Click **Search Invoice**.
+4. Search for the required purchase invoice.
+5. Select the invoice.
+
+<Note>
+  Selecting a purchase invoice is optional.
+</Note>
+
+## Add returned items
+
+1. Use **Filter by Category** to filter items, if required.
+2. Search for the required product using **Search for existing products**.
+3. Enter the **Quantity** being returned.
+4. Click **Add Item**.
+5. Review the item details in the Items table.
+
+The item table contains:
 
 | Field | What it does |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Item | Identifies the product being returned. |
+| Qty | Specifies the quantity being returned. |
+| Price | Displays the price of the item. |
+| Discount | Displays or applies the applicable discount. |
+| Tax Category | Specifies the applicable tax category. |
+| Tax Amount | Displays the calculated tax amount. |
+| Amount | Displays the calculated item amount. |
+| Action | Provides available actions for the item. |
 
-## FAQs
+## Add notes and terms and conditions
 
-\[TODO\]
+Use the **Notes** field to add additional information about the purchase return.
 
-## Related
+Use the **Terms and Conditions** field to specify any applicable terms or conditions related to the return.
 
-- [Sales invoices](/product-guide/sales-invoices)
-- [Payments](/product-guide/payments)
+## Add a signature
+
+A signature can be added to the purchase return document.
+
+1. Go to the signature area near the **Grand Total**.
+2. Click **Add Signature**.
+3. Add the required signature.
+4. Review the signature before creating the return.
+
+## Field reference
+
+| Field | Required | What it does |
+| --- | --- | --- |
+| Purchase Return Number | System-generated | Displays the purchase return number assigned by the system. |
+| Return Date | Yes | Specifies the date of the purchase return. |
+| Supplier | Yes | Selects the supplier associated with the return. |
+| Bill From Address | Auto-filled | Displays the supplier's billing address. |
+| Ship From Address | Auto-filled | Displays the supplier's shipping address. |
+| Purchase Invoice | No | Optionally associates the return with an existing purchase invoice. |
+| Filter by Category | No | Filters available products by category. |
+| Search for existing products | No | Searches for products to add to the return. |
+| Quantity | Yes for added items | Specifies the quantity being returned. |
+| Notes | No | Adds additional information about the return. |
+| Terms and Conditions | No | Adds applicable terms and conditions. |
+| Grand Total | System-calculated | Displays the total amount of the purchase return. |
+| Signature | No | Allows a signature to be added to the return document. |
+
+# FAQs
+
+### What is a purchase return?
+
+A purchase return records products that are returned to a supplier.
+
+### Is selecting a purchase invoice mandatory?
+
+No. The **Purchase Invoice** field is optional.
+
+### Can I create a purchase return without selecting a purchase invoice?
+
+Yes. The purchase invoice is optional, so you can create a return without associating it with an existing invoice.
+
+### Can I add multiple items to a purchase return?
+
+Yes. You can add products to the **Items** section and specify the quantity being returned.
+
+### Is the Purchase Return Number entered manually?
+
+No. The **Purchase Return Number** is automatically assigned when the return is saved.
+
+### Can I add notes to a purchase return?
+
+Yes. You can enter additional information in the **Notes** field.
+
+### Can I add terms and conditions?
+
+Yes. You can enter applicable information in the **Terms and Conditions** field.
+
+### Can I add a signature?
+
+Yes. The purchase return provides an **Add Signature** option.
+
+# Related
+
+- **Purchase invoices**
+- **Purchase orders**
+- **Inventory and items**
+- **Customers and suppliers**
+- **Payments**
