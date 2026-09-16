@@ -1,54 +1,248 @@
 ---
 title: "Business Settings "
-description: "Configure your business, users, roles, and module settings."
+description: "Manage your business information, company details, tax registration, signature, and AI integration settings."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  Business settings contain the information used across KomKits documents and business operations. Keep company and integration details up to date to ensure they appear correctly where required.
 </Note>
 
 ## Overview
 
-\[What this module covers: business profile, users and roles, module permissions, document numbering, taxes, templates, and the audit log.\]
+The **Business Settings** page allows you to configure your business information and other account-level settings.
+
+You can use this page to:
+
+- Add or update the business logo
+- Enter the business name
+- Select the business type
+- Select the industry type
+- Select the business registration type
+- Add the company phone number
+- Add the company email
+- Add the billing address
+- Add the business website
+- Configure GST/VAT registration
+- Add or update the authorized signature
+- Manage the **MCP API Key**
+- Configure the **AI Provider Key**
 
 ## Before you start
 
-- **Permission needed:** \[TODO: typically administrator\]
-- **Settings to review:** \[TODO\]
+- Make sure you have permission to access **Business Settings**.
+- Keep your business registration and tax information available before configuring the settings.
+- If you use AI integrations, keep the required provider API key available.
 
-## Key concepts
+# Business information
 
-| Term | Meaning |
-| --- | --- |
-| Role | \[TODO: a named set of module permissions assigned to users\] |
-| Audit log | \[TODO: record of who changed what and when\] |
+The **Business Settings** section contains the basic information about your business.
 
-## Common workflows
+### Business logo
 
-### \[TODO: Invite a user and assign a role\]
+Upload the logo that represents your business.
 
-\[TODO\]
+The business logo can be used on applicable business documents and invoices.
 
-### \[TODO: Change module permissions\]
+### Business name
 
-\[TODO\]
+Enter the registered or operating name of the business.
 
-### \[TODO: Review the audit log\]
+### Business type
 
-\[TODO\]
+Select the appropriate type of business from the available options.
 
-## Field reference
+### Industry type
+
+Select the industry that best represents the business.
+
+### Business registration type
+
+Select the applicable registration type for the business.
+
+### Company phone number
+
+Enter the business contact phone number.
+
+### Company email
+
+Enter the official business email address.
+
+### Billing address
+
+Enter the business billing address.
+
+### Website
+
+Enter the business website address.
+
+# GST/VAT registration
+
+Use this section to specify whether the business is registered for GST/VAT.
+
+### Are you GST/VAT Registered?
+
+Select:
+
+- **Yes** – if the business is registered for GST/VAT.
+- **No** – if the business is not registered.
+
+### GSTIN
+
+When GST/VAT registration is enabled, enter the applicable **GSTIN** or tax registration number.
+
+<Note>
+  Enter the tax registration number accurately because it may be used on applicable business documents.
+</Note>
+
+# Signature
+
+The **Signature** section allows you to add an authorized business signature.
+
+1. Add the authorized signature.
+2. Review the uploaded signature.
+3. Save the business settings.
+
+> **Note:** The signature added in Business Settings can be displayed on applicable invoices and other supported documents.
+
+# MCP API Key
+
+The **MCP API Key** section allows you to connect supported external tools to KomKits data through an API key.
+
+You can use it to connect tools such as supported AI/development applications to your KomKits data.
+
+### API key actions
+
+- **Regenerate** – Creates a new API key.
+- **Revoke** – Deactivates the existing API key.
+
+<Note>
+  Treat the API key as confidential. Do not share it publicly or include it in screenshots, documentation, or source code
+</Note>
+
+# AI Provider Key
+
+The **AI Provider Key** section allows you to configure your own AI provider API key.
+
+You can:
+
+- Select the AI provider.
+- Specify the model ID.
+- Enter the provider API key.
+- Save the key.
+- Remove the existing key.
+
+### Configure an AI provider
+
+1. Open **Business Settings**.
+2. Go to **AI Provider Key**.
+3. Select the required **Provider**.
+4. Enter the **Model ID**.
+5. Enter the provider **API Key**.
+6. Click **Save Key**.
+7. Verify that the provider is shown as connected.
+
+### Remove an AI provider key
+
+1. Open **Business Settings**.
+2. Go to **AI Provider Key**.
+3. Click **Remove Key**.
+4. Confirm the action if prompted.
+
+<Note>
+  The API key is stored securely by the application. Do not share your API key with other users.
+</Note>
+
+# Field reference
 
 | Field | What it does |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Business Logo | Adds the business logo used in supported areas and documents. |
+| Business Name | Identifies the business. |
+| Business Type | Specifies the type of business. |
+| Industry Type | Specifies the business industry. |
+| Business Registration Type | Identifies the applicable business registration type. |
+| Company Phone Number | Stores the business contact number. |
+| Company Email | Stores the business email address. |
+| Billing Address | Stores the business billing address. |
+| Website | Stores the business website. |
+| GST/VAT Registered | Specifies whether the business is registered for GST/VAT. |
+| GSTIN | Stores the business GST/tax registration number. |
+| Signature | Stores the authorized business signature. |
+| MCP API Key | Provides API access for supported integrations. |
+| Provider | Specifies the AI provider being used. |
+| Model ID | Specifies the AI model used by the selected provider. |
+| AI Provider API Key | Stores the API key used to connect the selected AI provider. |
 
-## FAQs
+# Common workflows
 
-\[TODO\]
+## Update business information
 
-## Related
+1. Open **Business Settings**.
+2. Update the required business information.
+3. Review the changes.
+4. Click **Save Changes**.
 
-- [Reports and dashboards](/product-guide/reports-dashboards)
+## Add a business signature
+
+1. Open **Business Settings**.
+2. Go to the **Signature** section.
+3. Add the authorized signature.
+4. Review the signature.
+5. Click **Save Changes**.
+
+## Configure GST/VAT details
+
+1. Open **Business Settings**.
+2. Select **Yes** under GST/VAT registration.
+3. Enter the GSTIN/tax registration number.
+4. Review the information.
+5. Click **Save Changes**.
+
+## Configure an AI provider
+
+1. Open **Business Settings**.
+2. Go to **AI Provider Key**.
+3. Select the provider.
+4. Enter the model ID.
+5. Enter the API key.
+6. Click **Save Key**.
+
+# FAQs
+
+### Where can I update my business information?
+
+Open **Admin → Business Settings**.
+
+### Can I change my business logo?
+
+Yes. You can update the business logo from **Business Settings**.
+
+### Can I add an authorized signature?
+
+Yes. The **Signature** section allows you to add an authorized business signature.
+
+### Where can I add my GSTIN?
+
+Enter the GSTIN in the **GSTIN** field after selecting **Yes** for GST/VAT registration.
+
+### Can I change the AI provider?
+
+Yes. You can select the required provider from the **AI Provider Key** section.
+
+### Can I change the AI model?
+
+Yes. Enter the required **Model ID** in the AI Provider Key section.
+
+### Can I remove an AI provider key?
+
+Yes. Use **Remove Key** in the AI Provider Key section.
+
+### What should I do if my MCP API key needs to be replaced?
+
+Use **Regenerate** to create a new MCP API key. Use **Revoke** when you need to deactivate the existing key.
+
+### Where is the business signature used?
+
+The signature configured in Business Settings can be displayed on supported business documents, such as invoices.

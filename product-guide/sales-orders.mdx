@@ -1,53 +1,270 @@
 ---
 title: "Sales orders"
-description: "Record customer orders and convert them into invoices."
+description: "Create and manage customer orders with items, pricing, taxes, discounts, payment details, and order terms."
 ---
 
 {/* PLACEHOLDER — copy structure from product-guide/template; see product-guide/sales-invoices for a worked example. Owner: Apsara. */}
 
 <Note>
-  This page is a draft. Content is being written and will be published soon.
+  A sales order records a customer's request to purchase products or services. You can select a customer, add items, apply discounts and additional fees, review taxes and totals, and record payment details.
 </Note>
 
 ## Overview
 
-\[What sales orders do: capture a confirmed customer order before invoicing, track fulfilment, convert to an invoice.\]
+The Sales Orders module allows you to create and manage orders received from customers.
 
-## Before you start
+You can use this module to:
+
+- Create a sales order
+- Select a customer
+- Set the order and due dates
+- Select payment terms
+- Add items to the order
+- Set item quantities and prices
+- Apply item-level discounts
+- Select tax categories
+- Add additional fees
+- Apply an overall discount
+- Select tax treatment
+- Enable automatic rounding
+- Add notes
+- Add terms and conditions
+- Record the amount received
+- Select the payment mode
+- Select the payment account
+- Track the balance amount
+- Add an authorized signature
+- Mark the order as fully paid
 
 - **Permission needed:** \[TODO\]
 - **Settings to review:** \[TODO\]
+
+## Before you start
+
+- **Permission needed:** Access to the **Sales orders** module.
+- **Settings to review:** Make sure customers, items, tax categories, payment modes, payment accounts, and business settings are configured before creating a sales order.
 
 ## Key concepts
 
 | Term | Meaning |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Sales order | A document that records a customer's order for products or services. |
+| Customer | The customer placing the order. |
+| Order date | The date on which the sales order is created. |
+| Due date | The date by which the payment or order is due according to the selected terms. |
+| Payment terms | Defines when the payment is expected. |
+| Item | A product or service included in the sales order. |
+| Additional fee | An extra charge added to the sales order. |
+| Discount | A reduction applied to an item or the overall order amount. |
+| Tax category | Determines the tax applicable to an item. |
+| Tax treatment | Determines how the tax is applied to the order. |
+| Amount received | The amount already received from the customer. |
+| Balance amount | The amount remaining after deducting the amount received from the grand total. |
 
 ## Common workflows
 
-### \[TODO: Create an order\]
+## Create a sales order
 
-\[TODO: steps — use the Steps pattern from the template\]
+1. Open **Sales orders** from the navigation menu.
+2. Click **Create Sales Order** or the option to add a new sales order.
+3. Select the **Order Date**.
+4. Select the **Due Date**.
+5. Select the required **Payment terms**.
+6. Select the **Customer**.
+7. Review the **Bill To** and **Ship To** addresses.
+8. Add the required items.
+9. Enter or review the item quantity and price.
+10. Select the applicable **Tax Category**.
+11. Apply a discount, if required.
+12. Add additional fees, if required.
+13. Select the required **Tax treatment**.
+14. Enable **Auto round off**, if required.
+15. Add **Notes** and **Terms and Conditions**, if required.
+16. Review the subtotal, discount, tax, and grand total.
+17. Enter the **Amount Received**, if a payment has already been made.
+18. Select the **Payment mode**.
+19. Select the **Payment Received In** account.
+20. Review the **Balance Amount**.
+21. Add an authorized signature, if required.
+22. Click **Create Sales Order**.
 
-### \[TODO: Convert an order to an invoice\]
+## Select a customer
 
-\[TODO\]
+1. Open a new sales order.
+2. Select the required **Customer**.
+3. Review the customer's billing and shipping addresses.
+4. If required, use **Change Customer** to select a different customer.
 
-### \[TODO: Cancel an order\]
+<Note>
+  Customer details such as addresses, tax details, and payment terms may be populated automatically after selecting the customer.
+</Note>
 
-\[TODO\]
+## Add items
+
+1. Go to the **Items** section.
+2. Search for an existing product.
+3. Select the required item.
+4. Enter the **Quantity**.
+5. Review or enter the **Price**.
+6. Select the **Tax Category**.
+7. Apply an item-level discount, if required.
+8. Review the calculated tax and amount.
+
+You can continue adding additional items to the sales order.
+
+## Apply an item discount
+
+A discount can be applied to an individual item.
+
+1. Locate the required item.
+2. Enter the discount amount or percentage in the **Discount** field.
+3. Review the updated item amount and tax.
+4. Continue with the sales order.
+
+## Add an additional fee
+
+Additional charges can be added to the sales order.
+
+1. Go to **Additional Fees**.
+2. Click **\+ Add Fee**.
+3. Enter the required fee details.
+4. Review the updated order total.
+
+## Apply an overall discount
+
+You can apply a discount to the overall sales order.
+
+1. Go to the **Discount** section.
+2. Enter the discount amount or percentage.
+3. Select the applicable tax treatment, if required.
+4. Review the updated totals.
+
+## Apply automatic rounding
+
+Use **Auto round off** when the final amount needs to be rounded.
+
+1. Enable **Auto round off**.
+2. Select the required rounding option.
+3. Enter or review the rounding amount.
+4. Verify the updated **Grand Total**.
+
+## Record payment
+
+If the customer has already made a payment while creating the sales order:
+
+1. Enter the amount in **Amount Received**.
+2. Select the payment mode.
+3. Select the account in **Payment Received In**.
+4. Review the **Balance Amount**.
+5. Enable **Mark as fully paid** if the complete amount has been received.
+
+<Note>
+  The balance amount is calculated based on the grand total and the amount received.
+</Note>
+
+## Add notes and terms
+
+You can add additional information to the sales order.
+
+- Enter additional information in **Notes**.
+- Enter applicable conditions in **Terms and Conditions**.
+
+## Add an authorized signature
+
+If a signature is configured for the business, it can be displayed on the sales order.
+
+1. Review the signature section.
+2. Verify the authorized signature.
+3. Remove or change it if the available options allow.
 
 ## Field reference
 
 | Field | What it does |
 | --- | --- |
-| \[TODO\] | \[TODO\] |
+| Order Date | Specifies the date of the sales order. |
+| Due Date | Specifies the payment or order due date. |
+| Payment Terms | Defines when payment is expected. |
+| Sales Order Number | Displays the sales order reference number. |
+| Customer | Identifies the customer for the order. |
+| Bill To | Displays the customer's billing address. |
+| Ship To | Displays the delivery address. |
+| Item | Identifies the product or service being ordered. |
+| Quantity | Specifies the quantity ordered. |
+| Price | Specifies the price of the item. |
+| Discount | Applies a discount to an item. |
+| Tax Category | Specifies the tax category applicable to the item. |
+| Tax Amount | Displays the tax calculated for the item. |
+| Amount | Displays the item amount after applicable calculations. |
+| Additional Fees | Adds extra charges to the order. |
+| Discount (Amount) | Applies an overall discount as a fixed amount. |
+| Discount (%) | Applies an overall discount as a percentage. |
+| Tax Treatment | Specifies how tax is applied to the order. |
+| Auto round off | Applies rounding to the calculated total. |
+| Sub Total | Displays the total before overall discount and tax. |
+| Discount | Displays the total discount applied to the order. |
+| Total Tax | Displays the total tax calculated for the order. |
+| Grand Total | Displays the final amount payable. |
+| Mark as fully paid | Indicates that the complete order amount has been received. |
+| Amount Received | Specifies the amount received from the customer. |
+| Payment Mode | Specifies how the payment was received. |
+| Payment Received In | Specifies the account where the payment was received. |
+| Balance Amount | Displays the remaining amount due. |
+| Notes | Adds additional information to the order. |
+| Terms and Conditions | Adds applicable terms and conditions. |
+| Create Sales Order | Saves the sales order. |
+| Cancel | Cancels the sales order creation. |
 
 ## FAQs
 
-\[TODO — use the AccordionGroup pattern from the template\]
+### What is a sales order?
+
+A sales order is a document used to record a customer's request to purchase products or services.
+
+### Is a customer required to create a sales order?
+
+Yes. **Customer** is a required field.
+
+### Can I change the customer after selecting one?
+
+Yes. Use **Change Customer** to select a different customer.
+
+### Can I add multiple items to a sales order?
+
+Yes. You can add multiple products or services to the order.
+
+### Can I apply a discount to an item?
+
+Yes. You can apply a discount to an individual item using the item's **Discount** field.
+
+### Can I apply a discount to the entire order?
+
+Yes. You can enter an overall discount using **Discount (Amount)** or **Discount (%)**.
+
+### Can I add additional fees?
+
+Yes. Use **\+ Add Fee** under **Additional Fees**.
+
+### Can I record a payment while creating the sales order?
+
+Yes. Enter the **Amount Received**, select the **Payment Mode**, and select the **Payment Received In** account.
+
+### What does "Mark as fully paid" mean?
+
+It indicates that the complete grand total has been received from the customer.
+
+### Can I add notes and terms and conditions?
+
+Yes. The sales order provides separate **Notes** and **Terms and Conditions** fields.
+
+### Is the sales order number entered manually?
+
+The **Sales Order Number** shown on the form is auto-assigned when the sales order is saved.
 
 ## Related
 
-- [Sales invoices](/product-guide/sales-invoices)
+- **Quotations**
+- **Sales invoices**
+- **Customers and suppliers**
+- **Payments**
+- **Sales returns**
+- **Inventory and items**
