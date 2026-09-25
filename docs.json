@@ -31,7 +31,6 @@
               "index",
               "guides/getting-started",
               "guides/authentication",
-              "guides/webhooks",
               "guides/monitoring-troubleshooting"
             ]
           }
